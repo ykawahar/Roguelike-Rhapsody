@@ -30,28 +30,28 @@ public class TextManager : MonoBehaviour
         cultistDescriptorList = new ArrayList();
         cultistDescriptorList2 = new ArrayList();
 
-        slimeSubjectList.Add("Beasts of slime");
-        slimeSubjectList.Add("Beasts of ooze");
-        slimeSubjectList.Add("Beasts of sludge");
+        slimeSubjectList.Add("Beasts of slime |");
+        slimeSubjectList.Add("Beasts of ooze |");
+        slimeSubjectList.Add("Beasts of sludge |");
 
-        cultistSubjectList.Add("Sly cultists");
-        cultistSubjectList.Add("Dark cultists");
-        cultistSubjectList.Add("Devout men");
+        cultistSubjectList.Add("Sly cultists |");
+        cultistSubjectList.Add("Dark cultists |");
+        cultistSubjectList.Add("Devout men |");
 
-        slimeDescriptorList.Add("of blue hue");
-        slimeDescriptorList.Add("of green hue");
-        slimeDescriptorList.Add("of red hue");
+        slimeDescriptorList.Add("of blue hue |");
+        slimeDescriptorList.Add("of green hue |");
+        slimeDescriptorList.Add("of red hue |");
 
-        cultistDescriptorList.Add("in dark robes");
-        cultistDescriptorList.Add("in crimson");
-        cultistDescriptorList.Add("of old gods");
+        cultistDescriptorList.Add("in dark robes |");
+        cultistDescriptorList.Add("in crimson |");
+        cultistDescriptorList.Add("of old gods |");
 
-        slimeDescriptorList2.Add("and strange smell");
-        slimeDescriptorList2.Add("and foul smell");
-        slimeDescriptorList2.Add("and strange face");
+        slimeDescriptorList2.Add("and strange smell |");
+        slimeDescriptorList2.Add("and foul smell |");
+        slimeDescriptorList2.Add("and strange face |");
 
-        cultistDescriptorList2.Add("and strange masks");
-        cultistDescriptorList2.Add("and in chrome");
+        cultistDescriptorList2.Add("and strange masks |");
+        cultistDescriptorList2.Add("and in chrome |");
 
         slimeActionList.Add("came to be!");
         slimeActionList.Add("had appeared!");

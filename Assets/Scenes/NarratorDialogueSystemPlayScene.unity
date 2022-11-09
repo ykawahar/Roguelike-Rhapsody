@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 5
     m_Right: 5
-    m_Top: 5
-    m_Bottom: 5
+    m_Top: 10
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -465,8 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33145d356b465264ab2aaf12f223c6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textLogPrefab: {fileID: 4740735643500752568, guid: 2acbf91105249b44f8c490b4e377daa6, type: 3}
+  textLogPrefab: {fileID: 7542486622091230988, guid: 26491a8025eca964e866a6dc37c1413c, type: 3}
   textLogParent: {fileID: 293734367}
+  textDelay: 2
 --- !u!114 &382080740
 MonoBehaviour:
   m_ObjectHideFlags: 0

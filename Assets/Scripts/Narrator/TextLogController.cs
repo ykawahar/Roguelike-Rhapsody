@@ -8,6 +8,8 @@ public class TextLogController : MonoBehaviour
     private static TextLogController instance;
     public GameObject textLogPrefab;
     public RectTransform textLogParent;
+
+    public float textDelay;
     public static TextLogController Instance
     {
         get
@@ -26,7 +28,21 @@ public class TextLogController : MonoBehaviour
         newTextLog.transform.SetParent(textLogParent);
         newTextLog.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-        newTextLog.transform.GetChild(0).GetComponent<Text>().text = text;
+        // newTextLog.transform.GetChild(0).GetComponent<Text>().text = text;
+        newTextLog.GetComponent<Text>().text = text;
+    }
 
+    public void typeTextByBlock(string text) 
+    {
+        GameObject newTextLog = Instantiate(textLogPrefab, textLogPrefab.transform.position, Quaternion.identity);
+        newTextLog.transform.SetParent(textLogParent);
+        newTextLog.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        string[] textBlocks = text.Split('|');
+        foreach (string block in textBlocks)
+        {
+            newTextLog.GetComponent<Text>().text += block;
+            WaitForSeconds wait = new WaitForSeconds(textDelay);
+        }
+        
     }
 }

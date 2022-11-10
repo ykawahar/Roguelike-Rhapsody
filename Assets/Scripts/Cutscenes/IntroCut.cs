@@ -32,17 +32,17 @@ public class IntroCut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isTyping && !isComplete)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonUp(0)) && !isTyping && !isComplete)
         {
             StartText();
             isTyping = true;
             pressSpace.SetActive(false);
             
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && isTyping)
+        else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonUp(0)) && isTyping)
         {
             speedUpText = true;
-            textSpeed = 0.01f;
+            textSpeed = 0;
         }
         
         if (isComplete)

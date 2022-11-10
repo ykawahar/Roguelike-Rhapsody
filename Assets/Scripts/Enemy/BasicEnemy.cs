@@ -9,7 +9,7 @@ public class BasicEnemy : MonoBehaviour
     private int speed = 4;
     private bool stop = false;
 
-    private float hp = 5;
+    public float hp = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +44,9 @@ public class BasicEnemy : MonoBehaviour
 
     public void TakeDamage(float damage){
         hp -= damage;
+        if (hp<= 0){
+            Debug.Log("dead");
+        }
     }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController charController;
+    [SerializeField] private Animator animator;
     
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float strength = 1f;
@@ -90,7 +91,11 @@ public class PlayerController : MonoBehaviour
             
 
             Debug.Log(c.name);
-            Destroy(c);
+            // c.GetComponent<BasicEnemy>().TakeDamage(damage);
+            // if (c.GetComponent<BasicEnemy>().hp <= 0){
+            //     Destroy(c);
+            // }
+
 
         }
     }

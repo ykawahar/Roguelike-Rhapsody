@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 07e88cfaec94fb94cb9ffb87e8bb714c, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textLogPrefab: {fileID: 7542486622091230988, guid: 26491a8025eca964e866a6dc37c1413c, type: 3}
   textLogParent: {fileID: 912853458}
-  textDelay: 0.08
+  textDelay: 0.15
 --- !u!114 &736411930
 MonoBehaviour:
   m_ObjectHideFlags: 0

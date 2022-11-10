@@ -20,11 +20,19 @@ public class EpithetButton : MonoBehaviour
     }
 
     public void SaveEpithet() {
-        PlayerStats.epithet = epithetButton.GetComponentInChildren<Text>().text;
+        PlayerStats.epithet = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
         Debug.Log(PlayerStats.epithet);
     }
 
     public void buttonTest() {
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+    }
+
+    //get currently selected button gameobject
+    //get text from button
+    //save text to playerstats
+
+    public void getClickedButton() {
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
     }
 }

@@ -30,6 +30,7 @@ public class EpithetGenerator : MonoBehaviour
     }
 
     public void GenerateEpithet() {
+        PlayerStats.epithet = "";
         // loops through epithets and creates 3 random buttons with epithets on them no repeats
         for (int i = 0; i < 3; i++) {
             int rand = Random.Range(0, epithets.Count);

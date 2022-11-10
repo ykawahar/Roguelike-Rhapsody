@@ -48,18 +48,16 @@ public class IntroCut : MonoBehaviour
         if (isComplete)
         {
 
-            pressSpaceText.text = "Select an epithet";
             if (!epithetsGenerated)
             {
+                pressSpace.SetActive(true);
+                pressSpaceText.text = "Select an epithet";
                 epithetGenerator.GenerateEpithet();
                 epithetsGenerated = true;
             }
-            pressSpace.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space) && !isTyping)
+            if (PlayerStats.epithet != "")
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("NarratorDialogueSystemPlayScene");
-                
-
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Prologue");
             }
         }
     }
@@ -72,6 +70,23 @@ public class IntroCut : MonoBehaviour
         IEnumerator WriteSentence() {
         foreach(char Character in dialogueLines.ToCharArray()) {
             dialogueText.text += Character;
+            yield return new WaitForSeconds(textSpeed);
+        }
+        isComplete = true;
+        isTyping = false;
+    }
+
+        void startBlockText()
+    {
+        StartCoroutine(typeBlock());
+    }
+
+    IEnumerator typeBlock()
+    {
+        string[] textBlocks = dialogueLines.Split('|');
+        foreach (string blocks in textBlocks)
+        {
+            dialogueText.text += blocks;
             yield return new WaitForSeconds(textSpeed);
         }
         isComplete = true;

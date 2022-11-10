@@ -7,7 +7,7 @@ public class TextManager : MonoBehaviour
 {
 
     public Queue<string> messageQueue;
-    private string prologue = "<epithet>| <name>| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
+    private string prologue = PlayerStats.epithet + " <name>| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
     public ArrayList slimeSubjectList;
     public ArrayList cultistSubjectList;
     public ArrayList cultistDescriptorList;

@@ -30,7 +30,7 @@ public class LevelManagerEnemies : MonoBehaviour
         for (int i = 0; i<= Random.Range(3,10); i++) {
             float randX = Random.Range(-32,32);
             float randZ = Random.Range(-13, 13);
-            Vector3 position = new Vector3(randX, 0, randZ);
+            Vector3 position = new Vector3(randX, 3, randZ);
             
             Instantiate(enemy, position, Quaternion.Euler(0,1,0));
         }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelManagerTribute : MonoBehaviour
 {
     public GameObject statue;
-    // Start is called before the first frame update
+    private List<int> statueTypes = new List<int>(){1,2};
+
     void Start()
     {
 
@@ -22,8 +23,27 @@ public class LevelManagerTribute : MonoBehaviour
     }
 
     void SpawnTribute(){
-        Instantiate(statue, new Vector3(transform.position.x-10, transform.position.y+1.5f, transform.position.z-3), Quaternion.Euler(45,0,0));
-        Instantiate(statue, new Vector3(transform.position.x+10, transform.position.y+1.5f, transform.position.z-3), Quaternion.Euler(45,0,0));
+
+        int index = Random.Range(0, statueTypes.Count);
+        Debug.Log("Index 1: " + index);
+        Debug.Log("Count 1: " + statueTypes.Count);
+        GameObject leftStatue = Instantiate(statue, new Vector3(transform.position.x-10, transform.position.y+5f, transform.position.z+7.8f), Quaternion.Euler(45,0,0));
+        TributeStatue script = leftStatue.GetComponent<TributeStatue>();
+        script.type = statueTypes[index];
+        // script.type = 2;
+        script.Initialize();
+        statueTypes.RemoveAt(index);
+
+        index = Random.Range(0, statueTypes.Count);
+        Debug.Log("Index 2: " + index);
+        Debug.Log(statueTypes.Count);
+        GameObject rightStatue = Instantiate(statue, new Vector3(transform.position.x+10, transform.position.y+5f, transform.position.z+7.8f), Quaternion.Euler(45,0,0));
+        TributeStatue rightScript = rightStatue.GetComponent<TributeStatue>();
+        rightScript.type = statueTypes[index];
+        // rightScript.type = 1;
+        rightScript.Initialize();
     }
+
+    
 }
 

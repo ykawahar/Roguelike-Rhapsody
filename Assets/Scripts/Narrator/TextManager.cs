@@ -62,7 +62,7 @@ public class TextManager : MonoBehaviour
         slimeActionList.Add("had appeared!");
 
         if(sceneName == "Prologue") {
-            StartPrologue();
+            StartCoroutine("StartPrologue");
         }
     }
 
@@ -80,8 +80,15 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    public void StartPrologue(){
+    void StartPrologue(){
         messageQueue.Enqueue(prologue);
+        StartCoroutine("WaitAndSwitchScene");
+    }
+
+    //wait 10 seconds before switchin scenes
+    IEnumerator WaitAndSwitchScene(){
+        yield return new WaitForSeconds(10);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 
 

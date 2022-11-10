@@ -12,17 +12,20 @@ public class IntroCut : MonoBehaviour
     private Text dialogueText;
     private Text pressSpaceText;
     private GameObject pressSpace;
+    private EpithetGenerator epithetGenerator;
 
     private bool isTyping = false;
 
     private bool speedUpText = false;
     private bool isComplete = false;
+    private bool epithetsGenerated = false;
 
     void Start()
     {
         dialogueText = GetComponent<Text>();
         pressSpace = GameObject.Find("PressSpaceText");
         pressSpaceText = GameObject.Find("PressSpaceText").GetComponent<Text>();
+        epithetGenerator = GameObject.Find("DialogueText").GetComponent<EpithetGenerator>();
         
     }
 
@@ -44,7 +47,13 @@ public class IntroCut : MonoBehaviour
         
         if (isComplete)
         {
-            pressSpaceText.text = "Press Space to Continue";
+
+            pressSpaceText.text = "Select an epithet";
+            if (!epithetsGenerated)
+            {
+                epithetGenerator.GenerateEpithet();
+                epithetsGenerated = true;
+            }
             pressSpace.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space) && !isTyping)
             {

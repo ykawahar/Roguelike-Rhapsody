@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TextManager : MonoBehaviour
 {
 
     public Queue<string> messageQueue;
+    private string prologue = "<epithet>| <name>| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
     public ArrayList slimeSubjectList;
     public ArrayList cultistSubjectList;
     public ArrayList cultistDescriptorList;
@@ -20,6 +22,9 @@ public class TextManager : MonoBehaviour
     {
 
         messageQueue = new Queue<string>();
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
 
         slimeSubjectList = new ArrayList();
         slimeDescriptorList = new ArrayList();
@@ -56,21 +61,29 @@ public class TextManager : MonoBehaviour
         slimeActionList.Add("came to be!");
         slimeActionList.Add("had appeared!");
 
-        messageQueue.Enqueue("This is the start of this hero's journey.");
+        if(sceneName == "Prologue") {
+            StartPrologue();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         CheckNewMessages();
     }
 
     void CheckNewMessages(){
         
         if (messageQueue.Count > 0){
-            TextLogController.Instance.typeTextByBlock(messageQueue.Dequeue());
+            TextLogController.Instance.startBlockText(messageQueue.Dequeue());
         }
     }
+
+    public void StartPrologue(){
+        messageQueue.Enqueue(prologue);
+    }
+
 
 
 }

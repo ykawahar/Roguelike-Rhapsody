@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40a2c525b3621124ca63fed5a09cd041
+guid: c24fd4028bfd373459f99db6f9412f31
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
       y: 512
       width: 0
       height: 0
-    spriteID: 059f7509b54ebe043a66f54b0d477115
+    spriteID: 91807cea0df2eff4081881b06358a08a
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -124,7 +124,7 @@ ScriptedImporter:
       y: 819
       width: 1538
       height: 191
-    spriteID: 8c1550f32417cbe4a8a95b584d4b8ff8
+    spriteID: b0dc26e1c953cad41aa156d9e440d59d
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -146,7 +146,7 @@ ScriptedImporter:
       y: 512
       width: 2000
       height: 299
-    spriteID: 095776341e924884ea63cc77d937b048
+    spriteID: ae5234f7cb5a28d418e466f1fadee2b3
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -168,7 +168,7 @@ ScriptedImporter:
       y: 4
       width: 2000
       height: 500
-    spriteID: a1fb954a89e9751469a1ecd7a6b185c7
+    spriteID: 2dc6469ac89561e4c8da19441a7f28d3
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 520
       width: 0
       height: 0
-    spriteID: d9592ffdb088b3e46a65e06c558e2429
+    spriteID: c1d1f6b6cd62a52409b87cd5210fbb27
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -224,42 +224,42 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 00000000000000000000000000000000
+    spriteID: 
     layerID: 3
     mosaicPosition: {x: 0, y: 0}
   - name: Foreground Elements
     spriteName: Foreground Elements
     isGroup: 0
     parentIndex: 0
-    spriteID: 059f7509b54ebe043a66f54b0d477115
+    spriteID: 91807cea0df2eff4081881b06358a08a
     layerID: 8
     mosaicPosition: {x: 2012, y: 512}
   - name: Driftwood
     spriteName: Driftwood
     isGroup: 0
     parentIndex: 0
-    spriteID: 8c1550f32417cbe4a8a95b584d4b8ff8
+    spriteID: b0dc26e1c953cad41aa156d9e440d59d
     layerID: 7
     mosaicPosition: {x: 4, y: 819}
   - name: Waves
     spriteName: Waves
     isGroup: 0
     parentIndex: 0
-    spriteID: 095776341e924884ea63cc77d937b048
+    spriteID: ae5234f7cb5a28d418e466f1fadee2b3
     layerID: 6
     mosaicPosition: {x: 4, y: 512}
   - name: Ground
     spriteName: Ground
     isGroup: 0
     parentIndex: 0
-    spriteID: a1fb954a89e9751469a1ecd7a6b185c7
+    spriteID: 2dc6469ac89561e4c8da19441a7f28d3
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
   - name: Layer 1
     spriteName: Layer 1
     isGroup: 0
     parentIndex: 0
-    spriteID: d9592ffdb088b3e46a65e06c558e2429
+    spriteID: c1d1f6b6cd62a52409b87cd5210fbb27
     layerID: 2
     mosaicPosition: {x: 2012, y: 520}
   characterData:

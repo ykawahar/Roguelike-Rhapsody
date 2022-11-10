@@ -6,13 +6,14 @@ public class LevelManagerEnemies : MonoBehaviour
 {
     public GameObject enemy;
 
+    public GameObject textLogManager;
     private TextManager textLog;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        textLog = GameObject.FindGameObjectWithTag("Narrator").GetComponent<TextManager>();
+        textLog = textLogManager.GetComponent<TextManager>();
         SpawnEnemies();
         // transform.position = Random.insideUnitCircle * 10;
         

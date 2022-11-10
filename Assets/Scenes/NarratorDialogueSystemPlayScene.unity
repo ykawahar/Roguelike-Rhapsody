@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8101887993695350243, guid: 8d1f6d6f7617942a186e963d7a02a182, type: 3}
+  textLogManager: {fileID: 382080738}
 --- !u!65 &522897600
 BoxCollider:
   m_ObjectHideFlags: 0

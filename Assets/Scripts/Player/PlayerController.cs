@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float strength = 1f;
     [SerializeField] private float speed = 10;
 
-    private float currentHP;
+    public float currentHP;
 
     private float gravity = 9.8f;
     private float jumpSpeed = 5f;
@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     Transform attackPoint;
     float attackRange = 0.5f;
+
+    public Collider attackBox;
 
     
 
@@ -55,6 +57,11 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetMouseButtonDown(0)){
             Debug.Log("Attack");
+            AttackCheck(attackBox);
+        }
+
+        if (currentHP <= 0){
+            Death();
         }
         
 
@@ -65,13 +72,29 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-
+    
         
         // Collider[] hitEnemies = Physics HitSphere(attackPoint.position, attackRange);
         // foreach(Collider hits in hitEnemies){
         //     Debug.Log("hit " + hits);
         // }
     }
+    private void AttackCheck(Collider col){
+        Collider [] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("HurtBox"));
+        foreach(Collider c in cols){
+            if(c.transform.parent==transform) {
+                continue;
+            }
+            float damage = 10*strength;
+
+            
+
+            Debug.Log(c.name);
+            Destroy(c);
+
+        }
+    }
+    
 
     void OnDrawGizmosSelected() {
         if (attackPoint = null){
@@ -80,7 +103,19 @@ public class PlayerController : MonoBehaviour
         // Gizmos DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    float GetHP(){
+    public float GetMaxHP(){
         return maxHP;
     }
+
+    void OnTriggerEnter(Collider col){
+        if (col.gameObject.tag == "Enemy"){
+            currentHP -= 5;
+        }
+    }
+
+    void Death(){
+        Debug.Log("Game Over");
+        Time.timeScale = 0;
+    }
+
 }

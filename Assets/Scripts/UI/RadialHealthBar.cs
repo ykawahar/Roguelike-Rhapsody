@@ -9,18 +9,18 @@ public class RadialHealthBar : MonoBehaviour
     [SerializeField] GameObject target;
 
     private float currentHP;
-    private float maxHP = 100;
+    private float maxHP;
 
     private void Start() {
-
+        currentHP = target.GetComponent<PlayerController>().currentHP;
+        maxHP = target.GetComponent<PlayerController>().GetMaxHP();
     }
 
     void Update()
     {
+        currentHP = target.GetComponent<PlayerController>().currentHP;
         float hpPercent = currentHP/maxHP;
         //Range of fill is 0 to 1
         hpBar.fillAmount = hpPercent;
-
-
     }
 }

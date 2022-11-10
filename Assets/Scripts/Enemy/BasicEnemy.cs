@@ -8,6 +8,8 @@ public class BasicEnemy : MonoBehaviour
     private GameObject playerObj = null;
     private int speed = 4;
     private bool stop = false;
+
+    private float hp = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,8 @@ public class BasicEnemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, playerPos) < 3f)
         {
-            Debug.Log("Stop");
+            // Debug.Log("Stop");
+            
         } else {
             Move(playerPos);
         }
@@ -37,6 +40,10 @@ public class BasicEnemy : MonoBehaviour
         // Debug.Log(playerPos);
         var Step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Step);
+    }
+
+    public void TakeDamage(float damage){
+        hp -= damage;
     }
 
 

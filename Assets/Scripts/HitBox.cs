@@ -28,4 +28,6 @@ public class HitBox : MonoBehaviour
             h.health-= damage;
         }
     }
+
+
 }

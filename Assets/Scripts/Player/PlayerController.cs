@@ -4,29 +4,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header ("Logic")]
     private CharacterController charController;
     [SerializeField] private Animator animator;
     
+    [Header ("Stats")]
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float strength = 1f;
-    [SerializeField] private float speed = 10;
-
+    [SerializeField] private float moveSpeed = 10;
     public float currentHP;
 
+    [Header ("vertical forces")]
     private float gravity = 9.8f;
     private float jumpSpeed = 5f;
-    private float jumpHeight = 5f;
-
+    private float jumpHeight = 1f;
     private float vertSpeed = 0;
 
+    [Header ("Movement")]
     private Vector3 moveDirection = Vector3.zero;
 
+    [Header ("Ground Check")]
     private bool grounded;
+    private float groundCheckDistance = 1f;
+    [SerializeField] private LayerMask groundMask;
+
+    [Header ("Animation")]
+    private bool facingRight = true;
 
     Transform attackPoint;
     float attackRange = 0.5f;
 
-    public Collider attackBox;
+    // public Collider attackBox; 
 
     
 
@@ -36,6 +44,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         currentHP = maxHP;
 
     }
@@ -43,32 +52,76 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // grounded = Physics.CheckSphere(transform.position, groundCheckDistance, groundMask); // PlayerPos, distanceToGround, WhatIsGround
+        // if (grounded){
+        //     Debug.Log("Grounded");
+        // }
+        // if(grounded && moveDirection.y < 0){
+        //     moveDirection.y = -2f;
+        // }
+
+        Debug.Log("grounded = " + charController.isGrounded);
+        /// Movement
         if (charController.isGrounded){
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection *= speed;
+        // if (grounded){
+
+            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+            moveDirection *= moveSpeed;
+            
+            if (moveDirection.x > 0 && !facingRight){
+                flip();
+            }
+            if (moveDirection.x < 0 && facingRight){
+                flip();
+            }
+            
 
             if (Input.GetButton("Jump")){
-                moveDirection.y = jumpSpeed;
+                moveDirection.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+                moveDirection = airMove(moveDirection.y);
+                // moveDirection.y = jumpSpeed;
             }
         }
-
-        moveDirection.y -= gravity*Time.deltaTime;
-
-        charController.Move(moveDirection * Time.deltaTime * speed);
         
-        if(Input.GetMouseButtonDown(0)){
-            Debug.Log("Attack");
-            AttackCheck(attackBox);
-        }
 
-        if (currentHP <= 0){
-            Death();
-        }
+        moveDirection.y -= gravity*Time.deltaTime; //Gravity
+
+        animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
+        
+
+
+        
+        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        
+        // if(Input.GetMouseButtonDown(0)){
+        //     Debug.Log("Attack");
+        //     AttackCheck(attackBox);
+        // }
+
+        // if (currentHP <= 0){
+        //     Death();
+        // }
         
 
         // vertSpeed -= gravity * Time.deltaTime;
         // _controller.Move(vertSpeed * Time.deltaTime);
         
+    }
+
+    private void flip(){
+        Vector3 currentFlip = transform.localScale;
+        currentFlip.x *= -1;
+        transform.localScale = currentFlip;
+
+        facingRight = !facingRight;
+    }
+
+    private Vector3 airMove(float yMove){
+       if (!charController.isGrounded){
+            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), yMove, Input.GetAxisRaw("Vertical")).normalized;
+            moveDirection *= moveSpeed/3;
+        }
+        return moveDirection;
     }
 
     void Attack()

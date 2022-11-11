@@ -16,6 +16,7 @@ public class LevelManagerEnemies : MonoBehaviour
         textLog = textLogManager.GetComponent<TextManager>();
         SpawnEnemies();
         // transform.position = Random.insideUnitCircle * 10;
+        StartCoroutine("WaitAndSwitchScene");
         
     }
 
@@ -37,5 +38,10 @@ public class LevelManagerEnemies : MonoBehaviour
         textLog.messageQueue.Enqueue(textLog.slimeSubjectList[Random.Range(0, textLog.slimeSubjectList.Count)] + " " + textLog.slimeDescriptorList[Random.Range(0, textLog.slimeDescriptorList.Count)] + " " + textLog.slimeDescriptorList2[Random.Range(0, textLog.slimeDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
 
 
+    }
+
+    IEnumerator WaitAndSwitchScene(){
+        yield return new WaitForSeconds(10);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TributeArea");
     }
 }

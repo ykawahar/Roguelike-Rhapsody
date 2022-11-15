@@ -7,14 +7,9 @@ using UnityEngine.Events;
 
 public class Gate : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
-    {
-        //check if collision with ball happens
-        if(collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Hello: ");
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player")) {
             SceneManager.LoadScene("SampleScene");
-            Debug.Log("Hello: ");
         }
     }
 

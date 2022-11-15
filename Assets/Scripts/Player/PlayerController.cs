@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [Header ("Logic")]
     private CharacterController charController;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip swooshAudio;
     
     [Header ("Stats")]
     [SerializeField] private float maxHP = 100f;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         currentHP = maxHP;
 
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -93,10 +96,11 @@ public class PlayerController : MonoBehaviour
         
         charController.Move(moveDirection * Time.deltaTime * moveSpeed);
         
-        // if(Input.GetMouseButtonDown(0)){
-        //     Debug.Log("Attack");
-        //     AttackCheck(attackBox);
-        // }
+        if(Input.GetMouseButtonDown(0)){
+            Debug.Log("Attack");
+            // AttackCheck(attackBox);
+            Attack();
+        }
 
         // if (currentHP <= 0){
         //     Death();
@@ -126,8 +130,16 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-    
+        animator.SetBool("Swing", true);
         
+        animator.SetBool("Swing", false);
+
+        audioSource.clip = swooshAudio;
+        audioSource.Play();
+        // var nextClip:AudioClip;
+        // nextClip = Resources.Load("Assets/Music/swoosh",AudioClip);
+        // audioSource.clip = nextClip;
+
         // Collider[] hitEnemies = Physics HitSphere(attackPoint.position, attackRange);
         // foreach(Collider hits in hitEnemies){
         //     Debug.Log("hit " + hits);

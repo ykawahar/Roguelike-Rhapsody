@@ -16,7 +16,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
@@ -24,7 +24,7 @@ TagManager:
   - 
   - HitBox
   - HurtBox
-  - 
+  - CollisionBlocker
   - 
   - 
   - 

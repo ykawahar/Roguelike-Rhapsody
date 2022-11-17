@@ -8,7 +8,7 @@ public class Waves : MonoBehaviour
     public float minZ = 17.5f;
     private bool ebb;
     public float speed = 2f;
-    public float duration = 1f;
+    public float duration = 2f;
 
     Rigidbody rb;
     // Start is called before the first frame update

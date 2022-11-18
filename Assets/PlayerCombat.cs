@@ -36,6 +36,10 @@ public class PlayerCombat : MonoBehaviour
 
     }
 
+    public void AntiGravity(float damage){
+        
+    }
+
     void OnDrawGizmosSelected(){
         if (attackPoint == null){
             return;

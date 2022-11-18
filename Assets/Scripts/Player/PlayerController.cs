@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [Range(0,100)]
     public float currentHP;
     public float basicDamage = 1;
+    public int maxJumpCount = 1;
+    private int currentJumpCount = 0;
 
     [Header ("vertical forces")]
     private float gravity = 9.8f;
@@ -159,6 +161,7 @@ public class PlayerController : MonoBehaviour
         /// Movement
         if (charController.isGrounded){
             animator.SetBool("Grounded", true);
+            currentJumpCount = 0;
             if (canMove){
                 Move();
             }
@@ -175,9 +178,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Grounded", false);
         }
 
+        if (charController.isGrounded & currentJumpCount == 0 || !charController.isGrounded & (currentJumpCount<maxJumpCount)){
+            if (Input.GetButtonDown("Jump")){
+                currentJumpCount +=1;
+                moveDirection.y = Jump();
+            }
+        }
+
         moveDirection.y -= gravity*Time.deltaTime; //Gravity
 
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
+
+        //Snap Falling
+        // if (moveDirection.y < 0){
+        //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
+        // }
         
         charController.Move(moveDirection * Time.deltaTime * moveSpeed);
         
@@ -198,13 +213,24 @@ public class PlayerController : MonoBehaviour
 
         CheckFlip(moveDirection.x); //Flip sprite if necessary
 
-        if (Input.GetButton("Jump")){
-            moveDirection.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
-            moveDirection = airMove(moveDirection.y);
-            // moveDirection.y = jumpSpeed;
-        }
+        // if (Input.GetButton("Jump")){
+        //     moveDirection.y = Jump();
+        //     moveDirection = airMove(moveDirection.y);
+        //     // moveDirection.y = jumpSpeed;
+        // }
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
         return moveDirection;
+    }
+
+    private float Jump(){
+        moveDirection.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+        
+        // if (currentJumpCount <maxJumpCount){
+        //     if(Input.GetButton("Jump")){
+        //         moveDirection.y = Jump();
+        //     }
+        // }
+        return moveDirection.y;
     }
 
     private void flip(){
@@ -322,6 +348,10 @@ public class PlayerController : MonoBehaviour
 
     void CannotMove(){
         canMove = false;
+    }
+
+    void ToggleIntangible(){
+        intangible = true;
     }
 
 }

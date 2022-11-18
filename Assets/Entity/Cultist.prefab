@@ -310,6 +310,7 @@ MonoBehaviour:
   maxHP: 10
   currentHP: 0
   defaultAttackDistance: 3.5
+  actionDistance: 22
   intangible: 0
   intangibleLength: 0.5
   floatingHeight: 0.3

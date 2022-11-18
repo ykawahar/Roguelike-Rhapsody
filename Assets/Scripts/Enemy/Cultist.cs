@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Cultist : BasicEnemy
 {
@@ -34,6 +35,7 @@ public class Cultist : BasicEnemy
         var position = transform.position;
         startY = transform.position.y+floatingHeight;
         oldPosX = transform.position.x;
+        
 
     }
 
@@ -101,10 +103,18 @@ public class Cultist : BasicEnemy
         Gizmos.DrawSphere(attackPoint.position, attackRange);
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(tipAttackPoint.position, tipAttackRange);
+        
+    }
+
+    void OnDrawGizmos(){
+       // Gizmos.DrawWireSphere(transform.position, actionDistance);
     }
 
     void ToggleTip(){
         tip = !tip;
     }
 
+
+
 }
+

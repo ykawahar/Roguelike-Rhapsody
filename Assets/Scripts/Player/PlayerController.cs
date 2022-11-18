@@ -9,12 +9,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
     public AudioClip swooshAudio;
+    private PlayerCombat playerCombat;
     
     [Header ("Stats")]
-    [SerializeField] private float maxHP = 100f;
-    [SerializeField] private float strength = 1f;
-    [SerializeField] private float moveSpeed = 10;
+    public float maxHP = 100f;
+    public float strength = 3f;
+    public float moveSpeed = 5f;
+
+    [Range(0,100)]
     public float currentHP;
+    public float basicDamage = 1;
 
     [Header ("vertical forces")]
     private float gravity = 9.8f;
@@ -34,8 +38,9 @@ public class PlayerController : MonoBehaviour
     [Header ("Animation")]
     private bool facingRight = true;
 
-    Transform attackPoint;
-    float attackRange = 0.5f;
+    [Header ("Combat")]
+    private float basicAttackRate = 2f;
+    private float nextAttackTime = 0f;
 
     // [Header ("LayerMasks")]
     // private int EnemyLayer = LayerMask.NameToLayer("Enemy"); 
@@ -51,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         charController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        playerCombat = GetComponent<PlayerCombat>();
         currentHP = maxHP;
 
         audioSource = GetComponent<AudioSource>();
@@ -150,9 +156,13 @@ public class PlayerController : MonoBehaviour
             if (canMove){
                 Move();
             }
-            if(Input.GetMouseButtonDown(0)){
-            Attack();
+            if (Time.time > nextAttackTime){
+                if(Input.GetMouseButtonDown(0)){
+                    Attack();
+                    nextAttackTime = Time.time + 1f/basicAttackRate;
+                }
             }
+            
             
 
         } else {
@@ -171,13 +181,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 Move(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         moveDirection *= moveSpeed;
-            
-        if (moveDirection.x > 0 && !facingRight){
-            flip();
-        }
-        if (moveDirection.x < 0 && facingRight){
-            flip();
-        }
+
+        CheckFlip(moveDirection.x); //Flip sprite if necessary
 
         if (Input.GetButton("Jump")){
             moveDirection.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
@@ -196,6 +201,15 @@ public class PlayerController : MonoBehaviour
         facingRight = !facingRight;
     }
 
+    private void CheckFlip(float heading){
+        if (heading > 0 && !facingRight){
+            flip();
+        }
+        if (heading < 0 && facingRight){
+            flip();
+        }
+    }
+
     private Vector3 airMove(float yMove){
        if (!charController.isGrounded){
             moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), yMove, Input.GetAxisRaw("Vertical")).normalized;
@@ -208,7 +222,7 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection=Vector3.zero; 
         animator.SetTrigger("Attack");
-        Debug.Log("Attack");
+        playerCombat.BasicSwing(strength*basicDamage);
 
         audioSource.clip = swooshAudio;
         audioSource.Play();
@@ -241,14 +255,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-
-    void OnDrawGizmosSelected() {
-        if (attackPoint = null){
-            return;
-        }
-        // Gizmos DrawWireSphere(attackPoint.position, attackRange);
-    }
-
     public float GetMaxHP(){
         return maxHP;
     }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour  
 {
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 1.35f;
     public LayerMask enemyLayers;
-    private Collider[] overlapResults = new Collider[10];
+    // private Collider[] overlapResults = new Collider[10];
 
 
     // Start is called before the first frame update

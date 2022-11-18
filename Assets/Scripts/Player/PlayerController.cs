@@ -6,16 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     [Header ("Logic")]
     private CharacterController charController;
-    [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource audioSource;
-    public AudioClip swooshAudio;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip swooshAudio;
     private PlayerCombat playerCombat;
     
     [Header ("Stats")]
     public float maxHP = 100f;
     public float strength = 3f;
     public float moveSpeed = 5f;
-
     [Range(0,100)]
     public float currentHP;
     public float basicDamage = 1;
@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
     [Header ("Combat")]
     private float basicAttackRate = 2f;
     private float nextAttackTime = 0f;
+    protected bool dead = false;
+    private bool intangible = false;
+    [SerializeField] protected float intangibleLength = 0.5f;
+    protected float timeCount;
 
     // [Header ("LayerMasks")]
     // private int EnemyLayer = LayerMask.NameToLayer("Enemy"); 
@@ -56,6 +60,8 @@ public class PlayerController : MonoBehaviour
     {
         charController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         playerCombat = GetComponent<PlayerCombat>();
         currentHP = maxHP;
 
@@ -178,6 +184,14 @@ public class PlayerController : MonoBehaviour
        
     }
 
+    private void LateUpdate() {
+        if (intangible & !dead){
+            if (Time.time > timeCount+intangibleLength){
+                intangible = false;
+            }
+        }
+    }
+
     private Vector3 Move(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         moveDirection *= moveSpeed;
@@ -271,7 +285,33 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    void Death(){
+    public void TakeDamage(float damage){
+        if (!intangible){
+            currentHP -= damage;
+            intangible = true;
+            timeCount = Time.time;
+            StartCoroutine(DamageFlash());
+            Debug.Log(name+" took "+damage+" damage!");
+
+            //hurtAnimation
+
+            if (currentHP<= 0){
+                dead = true;
+                Die();
+            }
+        }
+        
+    }
+
+    protected virtual IEnumerator DamageFlash(){
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = Color.white;
+    } 
+
+    void Die(){
+        intangible = true;
+        spriteRenderer.color = Color.black;
         Debug.Log("Game Over");
         Time.timeScale = 0;
     }

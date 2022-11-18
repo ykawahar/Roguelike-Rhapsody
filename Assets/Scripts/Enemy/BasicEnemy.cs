@@ -20,10 +20,14 @@ public class BasicEnemy : MonoBehaviour
 
     protected bool facingRight = true;
     protected float oldPosX;
+
+
+    [Header ("Combat")]
     protected bool dead = false;
     public bool intangible = false;
     [SerializeField] protected float intangibleLength = 0.5f;
     protected float timeCount;
+    protected LayerMask enemyLayer;
 
 
 
@@ -37,6 +41,8 @@ public class BasicEnemy : MonoBehaviour
         if (playerObj==null){
             playerObj = GameObject.FindGameObjectWithTag("Player");
         }
+        enemyLayer = LayerMask.GetMask("Player");
+
     }
 
     private void LateUpdate() {

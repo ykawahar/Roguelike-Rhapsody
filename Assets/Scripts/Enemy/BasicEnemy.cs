@@ -8,8 +8,9 @@ public class BasicEnemy : MonoBehaviour
     private GameObject playerObj = null;
     private int speed = 4;
     private bool stop = false;
-
     public float hp = 5;
+
+    public float defaultAttackDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +26,14 @@ public class BasicEnemy : MonoBehaviour
         //  playerObj.transform.position.z);
         Vector3 playerPos = new Vector3(playerObj.transform.position.x, 0, playerObj.transform.position.z);
 
-        if (Vector3.Distance(transform.position, playerPos) < 3f)
+        if (Vector3.Distance(transform.position, playerPos) > defaultAttackDistance)
         {
-            // Debug.Log("Stop");
-            
-        } else {
             Move(playerPos);
         }
+            
+        // } else {
+            
+        // }
 
     }
 

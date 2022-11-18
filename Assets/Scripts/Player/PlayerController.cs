@@ -210,9 +210,6 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Attack");
         Debug.Log("Attack");
 
-        
-        animator.SetBool("Swing", false);
-
         audioSource.clip = swooshAudio;
         audioSource.Play();
         // var nextClip:AudioClip;

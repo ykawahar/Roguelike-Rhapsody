@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     public void playerStatsOnClick() {
         Debug.Log("Player Stats Button Clicked");
-        playerStatsPanel.GetComponentInChildren<Text>().text = "Epithet:" + PlayerStats.epithet;
+        playerStatsPanel.GetComponentInChildren<Text>().text = "Epithet: " + PlayerStats.epithet;
         playerStatsPanel.SetActive(true);
     }
 

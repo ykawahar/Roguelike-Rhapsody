@@ -170,6 +170,10 @@ public class PlayerController : MonoBehaviour
                     Attack();
                     nextAttackTime = Time.time + 1f/basicAttackRate;
                 }
+                if(Input.GetKeyDown("q")){
+                    SpecialAttack();
+                    nextAttackTime = Time.time + 1f/basicAttackRate;
+                }
             }
             
             
@@ -293,6 +297,11 @@ public class PlayerController : MonoBehaviour
             // }
 
         }
+    }
+
+    private void SpecialAttack(){
+        moveDirection=Vector3.zero; 
+        playerCombat.AntiGravity(10);
     }
     
     public float GetMaxHP(){

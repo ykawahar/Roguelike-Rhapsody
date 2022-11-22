@@ -997,7 +997,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   strength: 1
+<<<<<<< Updated upstream
   speed: 5
+=======
+  moveSpeed: 10
+  currentHP: 0
+  basicDamage: 1
+  maxJumpCount: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  intangibleLength: 0.5
+>>>>>>> Stashed changes
 --- !u!81 &849677119
 AudioListener:
   m_ObjectHideFlags: 0

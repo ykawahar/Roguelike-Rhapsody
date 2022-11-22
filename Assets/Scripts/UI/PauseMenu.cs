@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
 
+
+
+    public Button playerStatsButton;
     [SerializeField] private GameObject pauseMenuUI;
+
+    [SerializeField] private GameObject playerStatsPanel;
 
     [SerializeField] private bool isPaused;
 
@@ -40,7 +46,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
-    void playerStatsOnClick(){
+    public void playerStatsOnClick() {
+        Debug.Log("Player Stats Button Clicked");
+        playerStatsPanel.GetComponentInChildren<Text>().text = "Epithet:" + PlayerStats.epithet;
+        playerStatsPanel.SetActive(true);
+    }
+
+    public void closePlayerStatsOnClick(){
+        playerStatsPanel.SetActive(false);
     }
 
     void Start() {

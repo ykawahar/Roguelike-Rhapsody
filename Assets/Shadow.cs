@@ -10,6 +10,7 @@ public class Shadow : MonoBehaviour
     {
         parent = transform.parent;
         initialY = transform.position.y;
+        transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
     }
 
     // Update is called once per frame

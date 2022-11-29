@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerCombat : MonoBehaviour  
 {
     public Transform attackPoint;
-    public float attackRange = 1.35f;
+    public float attackRange = 1.35f; //1.35f for sprite length
     public LayerMask enemyLayers;
     public CircleField circleField;
 
@@ -45,11 +46,19 @@ public class PlayerCombat : MonoBehaviour
         field.enemyLayer = enemyLayers;
         float time = 0;
         // Collider[] hitEnemies = StartCoroutine(GetCollider(field));
+        field.StartExpand(ExpandFinished);
         
-        
-        Collider[] hitEnemies = field.ReturnHitEnemies();
+        //Collider[] hitEnemies = field.ReturnHitEnemies();
         
 
+    }
+
+    public void ExpandFinished(Collider[] hitEnemies){
+
+        Debug.Log("Action Completed");
+        foreach (Collider enemy in hitEnemies){
+            enemy.GetComponent<BasicEnemy>().TakeDamage(10);
+        }
     }
 
     // private IEnumerator GetCollider(CircleField field){

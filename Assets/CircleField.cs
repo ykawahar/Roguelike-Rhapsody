@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CircleField : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class CircleField : MonoBehaviour
         initYScale = transform.localScale.y;
 
         hitEnemies = new List<Collider>();
-        StartCoroutine(ExpandCircle(targetScale, duration));
+        
     }
 
     // Update is called once per frame
@@ -28,6 +29,10 @@ public class CircleField : MonoBehaviour
         //     ReturnHitEnemies();
         // }
         Debug.Log(hitEnemies.Count);
+    }
+
+    public void StartExpand(Action<Collider[]> callback){
+        StartCoroutine(ExpandCircle(targetScale, duration, callback));
     }
 
     public Collider[] ReturnHitEnemies(){
@@ -41,9 +46,10 @@ public class CircleField : MonoBehaviour
         return hits;
     }
 
-    IEnumerator ExpandCircle(float endValue, float duration){
+    public IEnumerator ExpandCircle(float endValue, float duration, Action<Collider[]> callback){
         float time = 0;
         float startValue = scale;
+        end = false;
         Vector3 startScale = transform.localScale;
         while (time < duration)
         {
@@ -56,7 +62,7 @@ public class CircleField : MonoBehaviour
         transform.localScale = new Vector3(startScale.x * endValue, transform.localScale.y, startScale.z*endValue);
         scale = endValue;
         end = true;
-
+        callback(ReturnHitEnemies());
         
     } 
 

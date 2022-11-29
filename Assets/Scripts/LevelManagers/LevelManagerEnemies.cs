@@ -16,7 +16,7 @@ public class LevelManagerEnemies : MonoBehaviour
         textLog = textLogManager.GetComponent<TextManager>();
         SpawnEnemies();
         // transform.position = Random.insideUnitCircle * 10;
-        StartCoroutine("WaitAndSwitchScene");
+        // StartCoroutine("WaitAndSwitchScene");
         
     }
 
@@ -40,8 +40,8 @@ public class LevelManagerEnemies : MonoBehaviour
 
     }
 
-    IEnumerator WaitAndSwitchScene(){
-        yield return new WaitForSeconds(10);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TributeArea");
-    }
+    // IEnumerator WaitAndSwitchScene(){
+    //     yield return new WaitForSeconds(10);
+    //     UnityEngine.SceneManagement.SceneManager.LoadScene("TributeArea");
+    // }
 }

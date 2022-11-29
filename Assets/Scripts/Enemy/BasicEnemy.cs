@@ -10,6 +10,8 @@ public class BasicEnemy : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected GameObject playerObj = null;
     protected Vector3 playerPos = Vector3.zero;
+    protected LevelManagerEnemiesOriginal levelManager;
+    protected bool useLM = true; 
 
     [Header("Stats")]
     [SerializeField] protected int speed = 4;
@@ -17,6 +19,7 @@ public class BasicEnemy : MonoBehaviour
     public float maxHP = 10;
     [SerializeField] protected float currentHP;
     public float defaultAttackDistance;
+    public float actionDistance;
 
     protected bool facingRight = true;
     protected float oldPosX;
@@ -37,6 +40,11 @@ public class BasicEnemy : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (TryGetComponent(out LevelManagerEnemiesOriginal levelManager)){
+            levelManager = GetComponent<LevelManagerEnemiesOriginal>();
+        } else {
+            useLM = false;
+        }
         currentHP = maxHP;
         if (playerObj==null){
             playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -60,7 +68,7 @@ public class BasicEnemy : MonoBehaviour
         if (!dead){
             playerPos = new Vector3(playerObj.transform.position.x, 0, playerObj.transform.position.z);
 
-            if (Vector3.Distance(transform.position, playerPos) > defaultAttackDistance)
+            if (Vector3.Distance(transform.position, playerPos) > defaultAttackDistance & Vector3.Distance(transform.position, playerPos) < actionDistance)
             {
                 Move(playerPos);
             } 
@@ -132,6 +140,12 @@ public class BasicEnemy : MonoBehaviour
         intangible = true;
         StartCoroutine(DeathFade());
         Debug.Log(name+" died");
+
+        if (useLM){
+            levelManager.enemiesList.Remove(this.gameObject);
+            levelManager.CheckIfCleared();
+        }
+
         Destroy(gameObject, 2f);
         //Die animation
         //Disable this enemy

@@ -943,8 +943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915e380ba5e8444fbbbf0313cfb723a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  audioSource: {fileID: 0}
   swooshAudio: {fileID: 0}
   maxHP: 100
   strength: 1
@@ -954,6 +952,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
+  intangibleLength: 0.5
 --- !u!81 &849677119
 AudioListener:
   m_ObjectHideFlags: 0

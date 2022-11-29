@@ -47,7 +47,7 @@ public class PlayerCombat : MonoBehaviour
         // Collider[] hitEnemies = StartCoroutine(GetCollider(field));
         
         
-        // Collider[] hitEnemies = field.ReturnHitEnemies();
+        Collider[] hitEnemies = field.ReturnHitEnemies();
         
 
     }

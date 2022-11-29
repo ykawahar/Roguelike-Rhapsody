@@ -189,7 +189,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        moveDirection.y -= gravity*Time.deltaTime; //Gravity
+        moveDirection.y -= gravity/3*Time.deltaTime; //Gravity
+ 
 
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 

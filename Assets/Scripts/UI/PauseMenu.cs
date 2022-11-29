@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private bool isPaused;
 
+    private bool panelActive = false;
     private Canvas[] canvasObjects;
 
 
@@ -54,37 +55,52 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void playerStatsOnClick() {
-        Debug.Log("Player Stats Button Clicked");
-        playerStatsPanel.GetComponentInChildren<Text>().text = "Epithet: " + PlayerStats.epithet;
-        playerStatsPanel.SetActive(true);
+        if (panelActive == false) {
+            playerStatsPanel.GetComponentInChildren<Text>().text = "Epithet: " + PlayerStats.epithet;
+            playerStatsPanel.SetActive(true);
+            panelActive = true;
+        }
     }
 
     public void settingsOnClick() {
-        settingsPanel.SetActive(true);
+        if (panelActive == false) {
+            settingsPanel.SetActive(true);
+            panelActive = true;
+        }
     }
 
     public void storyOnClick() {
-        storyTellerPanel.SetActive(true);
+        if (panelActive == false) {
+            storyTellerPanel.SetActive(true);
+            panelActive = true;
+        }
     }
 
     public void quitOnClick() {
-        quitPanel.SetActive(true);
+        if (panelActive == false) {
+            quitPanel.SetActive(true);
+            panelActive = true;
+        }
     }
 
     public void closeStoryOnClick(){
         storyTellerPanel.SetActive(false);
+        panelActive = false;
     }
 
     public void closePlayerStatsOnClick(){
         playerStatsPanel.SetActive(false);
+        panelActive = false;
     }
 
     public void closeSettingsOnClick(){
         settingsPanel.SetActive(false);
+        panelActive = false;
     }
 
     public void closeQuitOnClick(){
         quitPanel.SetActive(false);
+        panelActive = false;
     }
 
     public void quitGameOnClick(){

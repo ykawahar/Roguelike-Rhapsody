@@ -34,8 +34,7 @@ public string currentLevelType;
             SceneManager.LoadScene("TributeArea");
         } else if (currentLevelType == "Combat") {
             Debug.Log("I think this is a combat node"+ " " + currentLevelType);
-            // SceneManager.LoadScene("SampleScene"); //not loaded New TestSene error
-            SceneManager.LoadScene("New TestSene");
+            SceneManager.LoadScene("CombatArea");
         } else if (currentLevelType == "Boss") {
             // SceneManager.LoadScene("")
         } else {

@@ -12,13 +12,8 @@ public GameObject StartNode;
 public GameObject EndNode;
 public int ColumnLength;
 public int RowHeight;
-public GameObject[,] gamePath;
 public GameObject currentLevel;
-public List<GameObject> LevelColumns; //linked list
-public Sprite battle;
-public Sprite tribute;
-// public Sprite[] LevelTypes = new Sprite[] {battle, tribute};
-
+LinkedList<string> currentMap = new LinkedList<string>(words);
 
     //map generator script
     //matrix array holding the map to turn certain positions on and off
@@ -45,34 +40,15 @@ public Sprite tribute;
         //button.GetComponent<Image>().sprite = Image1;
         //obj = currentObjContainer.transform.GetChild(0);
         //Cubes[0].name
-        foreach (GameObject column in LevelColumns) {
-                // string selectedLevel = getRandomLevel();
-                column.GetComponent<Image>().sprite = battle;
-        }
+        // foreach (GameObject column in LevelColumns) {
+        //         // string selectedLevel = getRandomLevel();
+        //         column.GetComponent<Image>().sprite = battle;
+        // }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // foreach (GameObject column in LevelColumns) {
-        //     Button btn = column.GetComponent<Button>();
-		//     btn.onClick.AddListener(SceneManager.LoadScene("SampleScene"));
-        // }
-    }
 
-    void loadCurrentLevel(string levelName) {
-        if (levelName == "Tribute") {
-            SceneManager.LoadScene("TributeArea");
-        } else if (levelName == "Battle") {
-            SceneManager.LoadScene("SampleScene");
-        } else if (levelName == "Boss") {
-            // SceneManager.LoadScene("")
-        } else {
-            //do nothing
-        }
     }
-
-    // public string getRandomLevel() {
-    //     // return LevelTypes[Random.Range(0, LevelTypes.Length)];
-    // }
 }

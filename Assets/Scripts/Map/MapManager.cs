@@ -14,7 +14,7 @@ public int ColumnLength;
 public int RowHeight;
 public GameObject[,] gamePath;
 public GameObject currentLevel;
-public List<GameObject> LevelColumns;
+public List<GameObject> LevelColumns; //linked list
 public Sprite battle;
 public Sprite tribute;
 // public Sprite[] LevelTypes = new Sprite[] {battle, tribute};

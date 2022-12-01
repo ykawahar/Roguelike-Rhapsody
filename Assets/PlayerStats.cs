@@ -18,6 +18,10 @@ public static class PlayerStats
 
     public static float strength = 3f;
 
+    public static float knockbackStrength = 2;
+
+    public static float basicDamage = 1;
+
     public static float moveSpeed = 5f;
 
     public static int maxJumpCount = 1;

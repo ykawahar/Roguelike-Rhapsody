@@ -27,4 +27,7 @@ public static class PlayerStats
     public static int maxJumpCount = 1;
 
     public static float critInstaKillSuperRealEpicMechanic = 0.0000000000001f;
+
+    
+
 }

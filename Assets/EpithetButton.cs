@@ -22,6 +22,26 @@ public class EpithetButton : MonoBehaviour
     public void SaveEpithet() {
         PlayerStats.epithet = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
         Debug.Log(PlayerStats.epithet);
+        if (PlayerStats.epithet.Equals("Fleet-Footed")) {
+            PlayerStats.moveSpeed += 2;
+        }
+        if (PlayerStats.epithet.Equals("Musclebound")) {
+            PlayerStats.strength += 2;
+        }
+        if (PlayerStats.epithet.Equals("Silver-Tongued")) {
+            PlayerStats.money += 200;
+        }
+        if (PlayerStats.epithet.Equals("Megamind")) {
+            //maybe something mmagic related idk though
+        }
+        if (PlayerStats.epithet.Equals("God-Fearing")) {
+            //not sure what to do with this one we could just give small buffs to multiple stats on this one
+        }
+        if (PlayerStats.epithet.Equals("Heroic")) {
+            PlayerStats.maxJumpCount += 1;
+            PlayerStats.knockbackStrength += 1;
+        }
+
     }
 
     public void buttonTest() {

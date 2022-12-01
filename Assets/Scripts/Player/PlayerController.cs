@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float basicDamage = 1;
     public int maxJumpCount = 1;
     private int currentJumpCount = 0;
+    public float knockbackStrength = 2;
 
     [Header ("vertical forces")]
     private float gravity = 9.8f;
@@ -279,7 +280,7 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection=Vector3.zero; 
         animator.SetTrigger("Attack");
-        playerCombat.BasicSwing(strength*basicDamage);
+        playerCombat.BasicSwing(strength*basicDamage, knockbackStrength);
 
         audioSource.clip = swooshAudio;
         audioSource.Play();

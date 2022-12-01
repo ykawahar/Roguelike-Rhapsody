@@ -27,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
         
     }
 
-    public void BasicSwing(float damage){
+    public void BasicSwing(float damage, float knockback){
         //Detect in range
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
@@ -37,8 +37,13 @@ public class PlayerCombat : MonoBehaviour
         //Deal Damage
         foreach(Collider enemy in hitEnemies){
             enemy.GetComponent<BasicEnemy>().TakeDamage(damage);
+            Rigidbody rb = enemy.GetComponent<Rigidbody>();
+            if(rb!=null){
+                // Vector3 direction = enemy.transform.position - transform.position;
+                // rb.AddForce(-direction.normalized * knockback, ForceMode.Impulse);
+                rb.AddExplosionForce(knockback, transform.position, 5f, 2f, ForceMode.Impulse);
+            }
         }
-
     }
 
     public void AntiGravity(float damage){

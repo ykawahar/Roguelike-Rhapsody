@@ -40,7 +40,7 @@ private Sprite assignedSprite;
             MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Combat") {
             // Debug.Log("I think this is a combat node"+ " " + currentLevelType);
-            SceneManager.LoadScene("CombatArea");
+            SceneManager.LoadScene("CombatScene");
             MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Boss") {
             // SceneManager.LoadScene("")

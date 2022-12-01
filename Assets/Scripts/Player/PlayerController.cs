@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     void MoveDefunct(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
         Debug.Log(moveDirection);
             
         if (moveDirection.x > 0 && !facingRight){
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
         // }
         
-        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
 
 
     }
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
         //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
         // }
         
-        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
         
        
     }
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 Move(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
 
         CheckFlip(moveDirection.x); //Flip sprite if necessary
 
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 airMove(float yMove){
        if (!charController.isGrounded){
             moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), yMove, Input.GetAxisRaw("Vertical")).normalized;
-            moveDirection *= moveSpeed/3;
+            moveDirection *= PlayerStats.moveSpeed/3;
         }
         return moveDirection;
     }
@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection=Vector3.zero; 
         animator.SetTrigger("Attack");
-        playerCombat.BasicSwing(strength*basicDamage);
+        playerCombat.BasicSwing(PlayerStats.strength*basicDamage);
 
         audioSource.clip = swooshAudio;
         audioSource.Play();
@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour
             if(c.transform.parent==transform) {
                 continue;
             }
-            float damage = 10*strength;
+            float damage = 10*PlayerStats.strength;
 
             
 
@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider col){
         if (col.gameObject.tag == "Enemy"){
-            currentHP -= 5;
+            PlayerStats.health -= 5;
         }
     }
 
@@ -335,7 +335,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage){
         if (!intangible){
-            currentHP -= damage;
+            // currentHP -= damage;
+            PlayerStats.health -= damage;
             intangible = true;
             timeCount = Time.time;
             StartCoroutine(DamageFlash());
@@ -343,7 +344,7 @@ public class PlayerController : MonoBehaviour
 
             //hurtAnimation
 
-            if (currentHP<= 0){
+            if (PlayerStats.health<= 0){
                 dead = true;
                 Die();
             }

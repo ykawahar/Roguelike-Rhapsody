@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 
+
 public class Gate : MonoBehaviour
 {
+
+    Scene currentScene;
+    string sceneName;
+
+
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("MapScene");
+            MainMapManager.Instance.mapCanvas.SetActive(true);
         }
     }
 

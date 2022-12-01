@@ -30,10 +30,10 @@ public string currentLevelType;
     void loadCurrentLevel() {
         Debug.Log("Load level has been called");
         if (currentLevelType == "Tribute") {
-            Debug.Log("I think this is a tribute node" + " " + currentLevelType);
+            // Debug.Log("I think this is a tribute node" + " " + currentLevelType);
             SceneManager.LoadScene("TributeArea");
         } else if (currentLevelType == "Combat") {
-            Debug.Log("I think this is a combat node"+ " " + currentLevelType);
+            // Debug.Log("I think this is a combat node"+ " " + currentLevelType);
             SceneManager.LoadScene("CombatArea");
         } else if (currentLevelType == "Boss") {
             // SceneManager.LoadScene("")

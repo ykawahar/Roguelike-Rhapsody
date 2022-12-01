@@ -29,9 +29,15 @@ public LinkedList<string> currentMap = new LinkedList<string>();
         mapInitialGenerate();
         mapNodes = GameObject.FindGameObjectsWithTag("MapNode");
         foreach (GameObject mapNode in mapNodes) {
-            currentMap.AddLast(mapNode.name);
+            if (mapNode.GetComponent<Image>().sprite.name == "swords") {
+                currentMap.AddLast("Combat");
+            } else if (mapNode.GetComponent<Image>().sprite.name == "tribute") {
+                currentMap.AddLast("Tribute");
+            } else {
+                //do nothing
+            }
         }
-        Debug.Log(currentMap.First);
+        // Debug.Log(currentMap.First.Value);
     }
 
     void mapInitialGenerate() {

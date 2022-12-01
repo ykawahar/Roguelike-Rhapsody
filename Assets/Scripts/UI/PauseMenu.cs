@@ -52,6 +52,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+        playerStatsPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        storyTellerPanel.SetActive(false);
+        quitPanel.SetActive(false);
+        panelActive = false;
     }
 
     public void playerStatsOnClick() {

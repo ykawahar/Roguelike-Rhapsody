@@ -29,7 +29,7 @@ public class RadialHealthBar : MonoBehaviour
     void Update()
     {
         currentHP = target.GetComponent<PlayerController>().currentHP;
-        hpPercent = PlayerStats.health/PlayerStats.maxHealth;
+        hpPercent = currentHP/maxHP;
         //Range of fill is 0 to 1
         hpBar.fillAmount = hpPercent;
 

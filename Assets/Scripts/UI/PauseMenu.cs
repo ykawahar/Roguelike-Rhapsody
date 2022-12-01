@@ -112,7 +112,5 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Start() {
-        canvasObjects = pauseMenuUI.GetComponents<Canvas>();
-        Debug.Log(canvasObjects[0].name);
     }
 }

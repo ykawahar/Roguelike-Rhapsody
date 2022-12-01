@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     void MoveDefunct(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
         Debug.Log(moveDirection);
             
         if (moveDirection.x > 0 && !facingRight){
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
         // }
         
-        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
 
 
     }
@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 Move(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
 
         CheckFlip(moveDirection.x); //Flip sprite if necessary
 
@@ -273,7 +273,7 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection=Vector3.zero; 
         animator.SetTrigger("Attack");
-        playerCombat.BasicSwing(strength*basicDamage);
+        playerCombat.BasicSwing(PlayerStats.strength*basicDamage);
 
         audioSource.clip = swooshAudio;
         audioSource.Play();

@@ -38,6 +38,7 @@ public class LevelManagerEnemiesOriginal : MonoBehaviour
             
             GameObject newSpawn = Instantiate(enemy, position, Quaternion.Euler(30,1,0));
             enemiesList.Add(newSpawn);
+            Debug.Log(enemiesList);
         }
 
     }

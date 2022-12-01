@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [Header ("vertical forces")]
     private float gravity = 9.8f;
     private float jumpSpeed = 5f;
-    private float jumpHeight = 1f;
+    [SerializeField] private float jumpHeight = 1f;
     private float vertSpeed = 0;
 
     [Header ("Movement")]
@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
         /// Movement
         if (charController.isGrounded){
             animator.SetBool("Grounded", true);
+            // animator.SetBool("Jump_Bool", false);
             currentJumpCount = 0;
             if (canMove){
                 Move();
@@ -183,13 +184,19 @@ public class PlayerController : MonoBehaviour
         }
 
         if (charController.isGrounded & currentJumpCount == 0 || !charController.isGrounded & (currentJumpCount<maxJumpCount)){
+
             if (Input.GetButtonDown("Jump")){
+                // animator.SetBool("Jump_Bool", false);
                 currentJumpCount +=1;
                 moveDirection.y = Jump();
+                animator.SetTrigger("Jump");
+                // animator.SetBool("Jump_Bool", true);
+
             }
         }
 
-        moveDirection.y -= gravity*Time.deltaTime; //Gravity
+        moveDirection.y -= gravity/3*Time.deltaTime; //Gravity
+ 
 
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 

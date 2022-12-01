@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelTypes: []
   currentLevelType: 
+  mapCanvas: {fileID: 2251861903648866960, guid: 676cc687ee13ee94a90c85facbf4e983, type: 3}

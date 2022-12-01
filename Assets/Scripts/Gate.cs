@@ -12,9 +12,11 @@ public class Gate : MonoBehaviour
     Scene currentScene;
     string sceneName;
 
+
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
             SceneManager.LoadScene("MapScene");
+            MainMapManager.Instance.mapCanvas.SetActive(true);
         }
     }
 

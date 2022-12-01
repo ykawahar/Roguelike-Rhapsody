@@ -17,10 +17,9 @@ private Sprite assignedSprite;
     {
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/swords"));
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/tribute"));
-        // if(MapManager.currentMap.Count != 0) {
-        //     Debug.Log("map is populated");
-        //     // this.gameObject.GetComponent<Image>().sprite = assignedSprite;
-        //     // this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
+        // if(MainMapManager.Instance.mapNodes.Length < 12) {
+        //     Debug.Log("map is not populated");
+        //     MainMapManager.Instance.mapNodes.add
         // }
         this.gameObject.GetComponent<Image>().sprite = getRandomLevel(); //see random level notes
         this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
@@ -36,11 +35,13 @@ private Sprite assignedSprite;
     void loadCurrentLevel() {
         Debug.Log("Load level has been called");
         if (currentLevelType == "Tribute") {
-            Debug.Log("I think this is a tribute node" + " " + currentLevelType);
+            // Debug.Log("I think this is a tribute node" + " " + currentLevelType);
             SceneManager.LoadScene("TributeArea");
+            MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Combat") {
-            Debug.Log("I think this is a combat node"+ " " + currentLevelType);
+            // Debug.Log("I think this is a combat node"+ " " + currentLevelType);
             SceneManager.LoadScene("CombatArea");
+            MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Boss") {
             // SceneManager.LoadScene("")
         } else {
@@ -58,17 +59,5 @@ private Sprite assignedSprite;
         }
         // Debug.Log(randomLevel.name); //testing purposes
         return assignedSprite;
-    }
-
-    void Awake()
-    {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("MapNode");
-
-        if (objs.Length > 12)
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 }

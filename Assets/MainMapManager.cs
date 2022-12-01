@@ -10,20 +10,14 @@ public class MainMapManager : MonoBehaviour
     public static MainMapManager Instance; //creating a single instance with static values
     public GameObject currentLevel;
 
-    public GameObject[] mapNodes;
+    public List<GameObject> mapNodes = new List<GameObject>();
     public LinkedList<Sprite> currentMap = new LinkedList<Sprite>();
+    public GameObject mapCanvas;
 
     void Start()
     {
-        mapNodes = GameObject.FindGameObjectsWithTag("MapNode");
-        foreach (GameObject mapNode in mapNodes) {
-            // if (mapNode.GetComponent<Image>().sprite.name == "swords") {
-            //     currentMap.AddLast(Resources.Load<Sprite>("Sprites/Icons/swords"));
-            // } else if (mapNode.GetComponent<Image>().sprite.name == "tribute") {
-            //     currentMap.AddLast(Resources.Load<Sprite>("Sprites/Icons/tribute"));
-            // } else {
-            //     //do nothing
-            // }
+        foreach (GameObject mapNode in GameObject.FindGameObjectsWithTag("MapNode")) {
+            mapNodes.Add(mapNode);
         }
         // Debug.Log(currentMap.First);
     }

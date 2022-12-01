@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     public float strength = 3f;
     public float moveSpeed = 5f;
     [Range(0,100)]
+    // public float groundMoveSpeed = 5f;
+    // [Range(0,100)]
+    // public float airMoveSpeed = 2.5f;
+    // [Range(0,100)]
     public float currentHP;
     public float basicDamage = 1;
     public int maxJumpCount = 1;
@@ -163,6 +167,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Grounded", true);
             // animator.SetBool("Jump_Bool", false);
             currentJumpCount = 0;
+            // moveSpeed = groundMoveSpeed;
             if (canMove){
                 Move();
             }
@@ -241,6 +246,7 @@ public class PlayerController : MonoBehaviour
         //         moveDirection.y = Jump();
         //     }
         // }
+        // moveSpeed = airMoveSpeed;
         return moveDirection.y;
     }
 

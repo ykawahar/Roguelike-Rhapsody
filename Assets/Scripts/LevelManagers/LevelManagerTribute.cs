@@ -27,7 +27,7 @@ public class LevelManagerTribute : MonoBehaviour
         int index = Random.Range(0, statueTypes.Count);
         Debug.Log("Index 1: " + index);
         Debug.Log("Count 1: " + statueTypes.Count);
-        GameObject leftStatue = Instantiate(statue, new Vector3(transform.position.x-10, transform.position.y+5f, transform.position.z+7.8f), Quaternion.Euler(45,0,0));
+        GameObject leftStatue = Instantiate(statue, new Vector3(transform.position.x-10, transform.position.y+6f, transform.position.z+7f), Quaternion.Euler(30,0,0));
         TributeStatue script = leftStatue.GetComponent<TributeStatue>();
         script.type = statueTypes[index];
         // script.type = 2;
@@ -37,7 +37,7 @@ public class LevelManagerTribute : MonoBehaviour
         index = Random.Range(0, statueTypes.Count);
         Debug.Log("Index 2: " + index);
         Debug.Log(statueTypes.Count);
-        GameObject rightStatue = Instantiate(statue, new Vector3(transform.position.x+10, transform.position.y+5f, transform.position.z+7.8f), Quaternion.Euler(45,0,0));
+        GameObject rightStatue = Instantiate(statue, new Vector3(transform.position.x+10, transform.position.y+6f, transform.position.z+7f), Quaternion.Euler(30,0,0));
         TributeStatue rightScript = rightStatue.GetComponent<TributeStatue>();
         rightScript.type = statueTypes[index];
         // rightScript.type = 1;

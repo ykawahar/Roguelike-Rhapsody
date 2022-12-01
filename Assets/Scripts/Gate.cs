@@ -9,7 +9,7 @@ public class Gate : MonoBehaviour
 {
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("CombatArea");
         }
     }
 

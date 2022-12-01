@@ -13,7 +13,8 @@ public GameObject EndNode;
 public int ColumnLength;
 public int RowHeight;
 public GameObject currentLevel;
-LinkedList<string> currentMap = new LinkedList<string>(words);
+public GameObject[] mapNodes;
+public LinkedList<string> currentMap = new LinkedList<string>();
 
     //map generator script
     //matrix array holding the map to turn certain positions on and off
@@ -26,6 +27,11 @@ LinkedList<string> currentMap = new LinkedList<string>(words);
         ColumnLength = 4;
         RowHeight = 3;
         mapInitialGenerate();
+        mapNodes = GameObject.FindGameObjectsWithTag("MapNode");
+        foreach (GameObject mapNode in mapNodes) {
+            currentMap.AddLast(mapNode.name);
+        }
+        Debug.Log(currentMap.First);
     }
 
     void mapInitialGenerate() {

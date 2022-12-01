@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3439891850324143129}
   m_Layer: 5
   m_Name: MapNode
-  m_TagString: Untagged
+  m_TagString: MapNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelTypes: []
+  currentLevelType: 

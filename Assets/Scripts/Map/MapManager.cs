@@ -10,46 +10,31 @@ public class MapManager : MonoBehaviour
 public GameObject GameCourseIcons;
 public GameObject StartNode;
 public GameObject EndNode;
-public int ColumnLength;
-public int RowHeight;
 public GameObject currentLevel;
 public GameObject[] mapNodes;
-public LinkedList<string> currentMap = new LinkedList<string>();
+public LinkedList<Sprite> currentMap = new LinkedList<Sprite>();
 
     //map generator script
     //matrix array holding the map to turn certain positions on and off
     //event call for when you come back to map script
 
 
+    //radically change this script to be a dont destroy on load or maybe a minimize option??
+
     // Start is called before the first frame update
     void Start()
     {
-        ColumnLength = 4;
-        RowHeight = 3;
-        mapInitialGenerate();
         mapNodes = GameObject.FindGameObjectsWithTag("MapNode");
         foreach (GameObject mapNode in mapNodes) {
-            currentMap.AddLast(mapNode.name);
+            if (mapNode.GetComponent<Image>().sprite.name == "swords") {
+                currentMap.AddLast(Resources.Load<Sprite>("Sprites/Icons/swords"));
+            } else if (mapNode.GetComponent<Image>().sprite.name == "tribute") {
+                currentMap.AddLast(Resources.Load<Sprite>("Sprites/Icons/tribute"));
+            } else {
+                //do nothing
+            }
         }
-        Debug.Log(currentMap.First);
-    }
-
-    void mapInitialGenerate() {
-        // gamePath = new GameObject[ColumnLength,RowHeight];
-        // for (int i = 0; i < ColumnLength; i++)
-        // {
-        //     for (int j = 0; j < RowHeight; j++)
-        //     {
-        //         gamePath[i,j] = (GameObject)Instantiate(TestMapNode, new Vector3(i, j, 0), Quaternion.identity);
-        //     }
-        // }
-        //button.GetComponent<Image>().sprite = Image1;
-        //obj = currentObjContainer.transform.GetChild(0);
-        //Cubes[0].name
-        // foreach (GameObject column in LevelColumns) {
-        //         // string selectedLevel = getRandomLevel();
-        //         column.GetComponent<Image>().sprite = battle;
-        // }
+        // Debug.Log(currentMap.First);
     }
 
     // Update is called once per frame

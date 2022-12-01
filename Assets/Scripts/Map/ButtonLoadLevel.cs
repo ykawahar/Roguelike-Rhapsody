@@ -10,12 +10,18 @@ public class ButtonLoadLevel : MonoBehaviour
 {
 public List<Sprite> LevelTypes;
 public string currentLevelType;
+private Sprite assignedSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/swords"));
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/tribute"));
+        // if(MapManager.currentMap.Count != 0) {
+        //     Debug.Log("map is populated");
+        //     // this.gameObject.GetComponent<Image>().sprite = assignedSprite;
+        //     // this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
+        // }
         this.gameObject.GetComponent<Image>().sprite = getRandomLevel(); //see random level notes
         this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
     }
@@ -42,15 +48,27 @@ public string currentLevelType;
         }
     }
     public Sprite getRandomLevel() { //need to add weights to make the combat more common (60/40 or 70/30)
-        Sprite randomLevel = LevelTypes[Random.Range(0, LevelTypes.Count)];
-        if (randomLevel.name == "swords") {
+        assignedSprite = LevelTypes[Random.Range(0, LevelTypes.Count)];
+        if (assignedSprite.name == "swords") {
             currentLevelType = "Combat";
-        } else if (randomLevel.name == "tribute") {
+        } else if (assignedSprite.name == "tribute") {
             currentLevelType = "Tribute";
         } else {
             currentLevelType = "";
         }
         // Debug.Log(randomLevel.name); //testing purposes
-        return randomLevel;
+        return assignedSprite;
+    }
+
+    void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("MapNode");
+
+        if (objs.Length > 12)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 }

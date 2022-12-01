@@ -21,7 +21,7 @@ public class Gate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentScene = SceneManager.GetActiveScene();
+        
     }
 
     // Update is called once per frame

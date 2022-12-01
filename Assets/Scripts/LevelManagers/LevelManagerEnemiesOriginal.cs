@@ -6,6 +6,7 @@ public class LevelManagerEnemiesOriginal : MonoBehaviour
 {
     public GameObject enemy;
     public List<GameObject> enemiesList;
+    public GameObject gate;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +20,13 @@ public class LevelManagerEnemiesOriginal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckIfCleared(); //instantly returns true, needs to either wait to spawn or have 1 enemy in list before scene starts
     }
 
     public void CheckIfCleared(){
         //Conditions to clear level
         if (enemiesList.Count<= 0){
-            //progress
+            gate.SetActive(true);
         }
     }
 

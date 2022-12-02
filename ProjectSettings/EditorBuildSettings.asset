@@ -21,7 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/NarratorDialogueSystemPlayScene.unity
     guid: 554f7183390ca284bb8c074e1d858cb0
   - enabled: 1
-    path: Assets/Scenes/CombatArea.unity
+    path: Assets/Scenes/CombatScene.unity
+    guid: 02ea049cacdf74efba030f9063d5667d
+  - enabled: 1
+    path: Assets/Scenes/New TestSene.unity
     guid: ec41c2b8668a4408c8e7656b99f2473f
   - enabled: 1
     path: Assets/Scenes/TributeArea.unity

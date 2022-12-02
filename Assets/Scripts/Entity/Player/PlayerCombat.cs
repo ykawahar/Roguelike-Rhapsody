@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
             Rigidbody rb = enemy.GetComponent<Rigidbody>();
             if(rb!=null){
                 // Vector3 direction = enemy.transform.position - transform.position;
-                // rb.AddForce(-direction.normalized * knockback, ForceMode.Impulse);
+                // rb.AddForce(direction.normalized * knockback, ForceMode.Impulse);
                 rb.AddExplosionForce(knockback, transform.position, 5f, 2f, ForceMode.Impulse);
             }
         }

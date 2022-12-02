@@ -42,6 +42,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Far Background
+    uniqueID: 4042232013
+    locked: 0
+  - name: Near Background
+    uniqueID: 2436461111
+    locked: 0
+  - name: Scene Elements
+    uniqueID: 91562631
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 396910061
     locked: 0

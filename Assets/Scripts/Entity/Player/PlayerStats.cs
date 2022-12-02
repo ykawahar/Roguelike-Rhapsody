@@ -18,7 +18,7 @@ public static class PlayerStats
 
     public static float strength = 3f;
 
-    public static float knockbackStrength = 2;
+    public static float knockbackStrength = 15;
 
     public static float basicDamage = 1;
 

@@ -767,7 +767,7 @@ MonoBehaviour:
   currentHP: 0
   basicDamage: 1
   maxJumpCount: 1
-  knockbackStrength: 15
+  knockbackStrength: 30
   jumpHeight: 0.6
   groundMask:
     serializedVersion: 2

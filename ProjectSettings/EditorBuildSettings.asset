@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/New TestSene.unity
     guid: ec41c2b8668a4408c8e7656b99f2473f
   - enabled: 1
+    path: Assets/Scenes/CombatScene.unity
+    guid: 02ea049cacdf74efba030f9063d5667d
+  - enabled: 1
     path: Assets/Scenes/TributeArea.unity
     guid: c61de1532523946dda7ba4f0dbbd9825
   - enabled: 1

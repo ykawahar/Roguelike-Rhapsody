@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &5590689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6330501949724235907, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
-  m_PrefabInstance: {fileID: 6330501949727594018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &97223537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1834,7 @@ MonoBehaviour:
   currentHP: 0
   basicDamage: 1
   maxJumpCount: 1
+  knockbackStrength: 2
   jumpHeight: 1
   groundMask:
     serializedVersion: 2
@@ -2486,7 +2482,6 @@ GameObject:
   - component: {fileID: 1458544647}
   - component: {fileID: 1458544646}
   - component: {fileID: 1458544645}
-  - component: {fileID: 1458544644}
   m_Layer: 0
   m_Name: LevelManagerEnemies
   m_TagString: Untagged
@@ -2494,21 +2489,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1458544644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458544643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e874a00272cd4ce18a6f6f6c5e42804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 5785028116210472011, guid: 2490f851710044423b8402d453553041, type: 3}
-  enemiesList: []
-  gate: {fileID: 5590689}
 --- !u!65 &1458544645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2955,6 +2935,10 @@ PrefabInstance:
     - target: {fileID: 6330501949724235907, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
       propertyPath: m_Name
       value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330501949724235907, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6330501949724235908, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
       propertyPath: m_RootOrder

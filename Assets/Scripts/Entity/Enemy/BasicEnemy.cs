@@ -10,7 +10,7 @@ public class BasicEnemy : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected GameObject playerObj = null;
     protected Vector3 playerPos = Vector3.zero;
-    protected LevelManagerEnemiesOriginal levelManager;
+    protected LevelManagerEnemies levelManager;
     protected bool useLM = true; 
 
     [Header("Stats")]
@@ -40,11 +40,13 @@ public class BasicEnemy : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (TryGetComponent(out LevelManagerEnemiesOriginal levelManager)){
-            levelManager = GetComponent<LevelManagerEnemiesOriginal>();
-        } else {
-            useLM = false;
-        }
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        // if (TryGetComponent(out LevelManagerEnemies levelManager)){
+        //     levelManager = GetComponent<LevelManagerEnemies>();
+        // } else {
+        //     useLM = false;
+        // }
         currentHP = maxHP;
         if (playerObj==null){
             playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -71,6 +73,7 @@ public class BasicEnemy : MonoBehaviour
             if (Vector3.Distance(transform.position, playerPos) > defaultAttackDistance & Vector3.Distance(transform.position, playerPos) < actionDistance)
             {
                 Move(playerPos);
+                // CheckFlip();
             } 
         }
    
@@ -136,15 +139,15 @@ public class BasicEnemy : MonoBehaviour
         spriteRenderer.color = Color.white;
     } 
 
-    void Die(){
+    protected virtual void Die(){
         intangible = true;
         StartCoroutine(DeathFade());
         Debug.Log(name+" died");
 
-        if (useLM){
-            levelManager.enemiesList.Remove(this.gameObject);
-            levelManager.CheckIfCleared();
-        }
+        // if (useLM){
+        //     levelManager.enemiesList.Remove(this.gameObject);
+        //     levelManager.CheckIfCleared();
+        // }
 
         Destroy(gameObject, 2f);
         //Die animation

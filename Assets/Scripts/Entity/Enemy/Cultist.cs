@@ -29,14 +29,9 @@ public class Cultist : BasicEnemy
     {
         base.Start();
         facingRight = false;
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody>();
         var position = transform.position;
         startY = transform.position.y+floatingHeight;
         oldPosX = transform.position.x;
-        
-
     }
 
 

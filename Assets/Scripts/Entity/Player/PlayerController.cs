@@ -9,27 +9,28 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+    private BoxCollider boxCollider;
     [SerializeField] private AudioClip swooshAudio;
     private PlayerCombat playerCombat;
     
     [Header ("Stats")]
-    public float maxHP = 100f;
-    public float strength = 3f;
-    public float moveSpeed = 5f;
-    [Range(0,100)]
-    // public float groundMoveSpeed = 5f;
+    // public float maxHP = 100f;
+    // public float strength = 3f;
+    // public float moveSpeed = 5f;
     // [Range(0,100)]
+    // public float groundMoveSpeed = 5f;
+    // // [Range(0,100)]
     // public float airMoveSpeed = 2.5f;
     // [Range(0,100)]
-    public float currentHP;
-    public float basicDamage = 1;
-    public int maxJumpCount = 1;
+    // public float currentHP;
+    // public float basicDamage = 1;
+    // public int maxJumpCount = 1;
     private int currentJumpCount = 0;
-    public float knockbackStrength = 2;
+    // public float knockbackStrength = 2;
 
     [Header ("vertical forces")]
     private float gravity = 9.8f;
-    private float jumpSpeed = 5f;
+    // private float jumpSpeed = 5f;
     [SerializeField] private float jumpHeight = 1f;
     private float vertSpeed = 0;
 
@@ -46,9 +47,9 @@ public class PlayerController : MonoBehaviour
     private bool facingRight = true;
 
     [Header ("Combat")]
-    private float basicAttackRate = 2f;
+    // private float basicAttackRate = 2f;
     private float nextAttackTime = 0f;
-    protected bool dead = false;
+    // protected bool dead = false;
     private bool intangible = false;
     [SerializeField] protected float intangibleLength = 0.5f;
     protected float timeCount;
@@ -70,9 +71,8 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         playerCombat = GetComponent<PlayerCombat>();
-        currentHP = maxHP;
-
         audioSource = GetComponent<AudioSource>();
+        boxCollider = GetComponent<BoxCollider>();
 
     }
 
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     void MoveDefunct(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
         Debug.Log(moveDirection);
             
         if (moveDirection.x > 0 && !facingRight){
@@ -155,13 +155,14 @@ public class PlayerController : MonoBehaviour
         //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
         // }
         
-        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
 
 
     }
 
     void Update()
     {
+        isGrounded();
         Debug.Log("grounded = " + charController.isGrounded);
         /// Movement
         if (charController.isGrounded){
@@ -175,11 +176,11 @@ public class PlayerController : MonoBehaviour
             if (Time.time > nextAttackTime){
                 if(Input.GetMouseButtonDown(0)){
                     Attack();
-                    nextAttackTime = Time.time + 1f/basicAttackRate;
+                    nextAttackTime = Time.time + 1f/PlayerStats.basicAttackRate;
                 }
                 if(Input.GetKeyDown("q")){
                     SpecialAttack();
-                    nextAttackTime = Time.time + 1f/basicAttackRate;
+                    nextAttackTime = Time.time + 1f/PlayerStats.basicAttackRate;
                 }
             }
             
@@ -189,7 +190,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Grounded", false);
         }
 
-        if (charController.isGrounded & currentJumpCount == 0 || !charController.isGrounded & (currentJumpCount<maxJumpCount)){
+        if (charController.isGrounded & currentJumpCount == 0 || !charController.isGrounded & (currentJumpCount<PlayerStats.maxJumpCount)){
 
             if (Input.GetButtonDown("Jump")){
                 // animator.SetBool("Jump_Bool", false);
@@ -211,22 +212,36 @@ public class PlayerController : MonoBehaviour
         //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
         // }
         
-        charController.Move(moveDirection * Time.deltaTime * moveSpeed);
+        charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
         
        
     }
 
     private void LateUpdate() {
-        if (intangible & !dead){
+        if (intangible & !PlayerStats.dead){
             if (Time.time > timeCount+intangibleLength){
                 intangible = false;
             }
         }
     }
 
+    private bool isGrounded(){
+        RaycastHit raycastHit;
+        Physics.Raycast(boxCollider.bounds.center, Quaternion.Euler(30,1,0)*Vector3.down,  out raycastHit, boxCollider.bounds.extents.y + 0.05f, groundMask); 
+        Color rayColor;
+        if (raycastHit.collider != null) {
+            rayColor = Color.green;
+        } else {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(boxCollider.bounds.center, Quaternion.Euler(30,1,0)*Vector3.down * (boxCollider.bounds.extents.y + 0.5f), rayColor); 
+        Debug.Log(raycastHit.collider);
+        return raycastHit.collider !=null;
+    }
+
     private Vector3 Move(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveDirection *= moveSpeed;
+        moveDirection *= PlayerStats.moveSpeed;
 
         CheckFlip(moveDirection.x); //Flip sprite if necessary
 
@@ -271,7 +286,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 airMove(float yMove){
        if (!charController.isGrounded){
             moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), yMove, Input.GetAxisRaw("Vertical")).normalized;
-            moveDirection *= moveSpeed/3;
+            moveDirection *= PlayerStats.moveSpeed/3;
         }
         return moveDirection;
     }
@@ -280,7 +295,7 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection=Vector3.zero; 
         animator.SetTrigger("Attack");
-        playerCombat.BasicSwing(strength*basicDamage, knockbackStrength);
+        playerCombat.BasicSwing(PlayerStats.strength*PlayerStats.basicDamage, PlayerStats.knockbackStrength);
 
         audioSource.clip = swooshAudio;
         audioSource.Play();
@@ -300,7 +315,7 @@ public class PlayerController : MonoBehaviour
             if(c.transform.parent==transform) {
                 continue;
             }
-            float damage = 10*strength;
+            float damage = 10*PlayerStats.strength;
 
             
 
@@ -318,13 +333,9 @@ public class PlayerController : MonoBehaviour
         playerCombat.AntiGravity(10);
     }
     
-    public float GetMaxHP(){
-        return maxHP;
-    }
-
     void OnTriggerEnter(Collider col){
         if (col.gameObject.tag == "Enemy"){
-            currentHP -= 5;
+            PlayerStats.currentHealth -= 5;
         }
     }
 
@@ -336,7 +347,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage){
         if (!intangible){
-            currentHP -= damage;
+            PlayerStats.currentHealth -= damage;
             intangible = true;
             timeCount = Time.time;
             StartCoroutine(DamageFlash());
@@ -344,8 +355,8 @@ public class PlayerController : MonoBehaviour
 
             //hurtAnimation
 
-            if (currentHP<= 0){
-                dead = true;
+            if (PlayerStats.currentHealth<= 0){
+                PlayerStats.dead = true;
                 Die();
             }
         }

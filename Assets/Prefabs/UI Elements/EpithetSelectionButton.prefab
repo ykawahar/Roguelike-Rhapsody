@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5438929683271798965}
   - component: {fileID: 2635574962507529653}
   m_Layer: 5
-  m_Name: Button 1
+  m_Name: EpithetSelectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

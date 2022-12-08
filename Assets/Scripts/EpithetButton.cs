@@ -23,10 +23,10 @@ public class EpithetButton : MonoBehaviour
         PlayerStats.epithet = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
         Debug.Log(PlayerStats.epithet);
         if (PlayerStats.epithet.Equals("Fleet-Footed")) {
-            PlayerStats.moveSpeed += 2;
+            PlayerStats.moveSpeed *= 1.2f;
         }
         if (PlayerStats.epithet.Equals("Musclebound")) {
-            PlayerStats.strength += 2;
+            PlayerStats.strength *= 1.2f;
         }
         if (PlayerStats.epithet.Equals("Silver-Tongued")) {
             PlayerStats.money += 200;
@@ -38,8 +38,7 @@ public class EpithetButton : MonoBehaviour
             //not sure what to do with this one we could just give small buffs to multiple stats on this one
         }
         if (PlayerStats.epithet.Equals("Heroic")) {
-            PlayerStats.maxJumpCount += 1;
-            PlayerStats.knockbackStrength += 1;
+            PlayerStats.knockbackStrength *= 1.2f;
         }
 
     }

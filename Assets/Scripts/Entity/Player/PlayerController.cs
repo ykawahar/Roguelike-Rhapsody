@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [Header ("vertical forces")]
     private float gravity = 9.8f;
     // private float jumpSpeed = 5f;
-    [SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float jumpHeight = 0.6f;
     private float vertSpeed = 0;
 
     [Header ("Movement")]
@@ -202,15 +202,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        moveDirection.y -= gravity/3*Time.deltaTime; //Gravity
+        moveDirection.y -= gravity*Time.deltaTime; //Gravity
  
 
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 
-        //Snap Falling
-        // if (moveDirection.y < 0){
-        //     moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
-        // }
+        // Snap Falling
+        if (moveDirection.y < 0){
+            moveDirection.y -= gravity*Time.deltaTime*(2.5f-1);
+        }
         
         charController.Move(moveDirection * Time.deltaTime * PlayerStats.moveSpeed);
         
@@ -255,7 +255,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private float Jump(){
-        moveDirection.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+        moveDirection.y = Mathf.Sqrt(jumpHeight * 2 *gravity);
+        // moveDirection.y += jumpHeight * gravity * 2.5f * Time.deltaTime;
         
         // if (currentJumpCount <maxJumpCount){
         //     if(Input.GetButton("Jump")){
@@ -263,6 +264,8 @@ public class PlayerController : MonoBehaviour
         //     }
         // }
         // moveSpeed = airMoveSpeed;
+        // moveDirection.x = moveDirection.x*0.5f
+        // moveDirection.z = moveDirection..z*0.5f
         return moveDirection.y;
     }
 

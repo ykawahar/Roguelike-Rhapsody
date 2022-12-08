@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Narrator
   - MapNode
+  - Gate
   layers:
   - Default
   - TransparentFX

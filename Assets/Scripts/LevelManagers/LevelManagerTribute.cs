@@ -25,8 +25,8 @@ public class LevelManagerTribute : MonoBehaviour
     void SpawnTribute(){
 
         int index = Random.Range(0, statueTypes.Count);
-        Debug.Log("Index 1: " + index);
-        Debug.Log("Count 1: " + statueTypes.Count);
+        // Debug.Log("Index 1: " + index);
+        // Debug.Log("Count 1: " + statueTypes.Count);
         GameObject leftStatue = Instantiate(statue, new Vector3(transform.position.x-10, transform.position.y+6f, transform.position.z+7f), Quaternion.Euler(30,0,0));
         TributeStatue script = leftStatue.GetComponent<TributeStatue>();
         script.type = statueTypes[index];
@@ -35,11 +35,12 @@ public class LevelManagerTribute : MonoBehaviour
         statueTypes.RemoveAt(index);
 
         index = Random.Range(0, statueTypes.Count);
-        Debug.Log("Index 2: " + index);
-        Debug.Log(statueTypes.Count);
+        // Debug.Log("Index 2: " + index);
+        // Debug.Log(statueTypes.Count);
         GameObject rightStatue = Instantiate(statue, new Vector3(transform.position.x+10, transform.position.y+6f, transform.position.z+7f), Quaternion.Euler(30,0,0));
         TributeStatue rightScript = rightStatue.GetComponent<TributeStatue>();
         rightScript.type = statueTypes[index];
+        rightScript.offset = -1;
         // rightScript.type = 1;
         rightScript.Initialize();
     }

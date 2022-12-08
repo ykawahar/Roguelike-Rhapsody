@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 6330501949724235904}
   m_Layer: 0
   m_Name: Gate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6330501949724235908
 Transform:
   m_ObjectHideFlags: 0
@@ -109,4 +109,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbbdd797d66a4b7c876f5ce78d1d7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCanvas: {fileID: 2251861903648866960, guid: 676cc687ee13ee94a90c85facbf4e983, type: 3}

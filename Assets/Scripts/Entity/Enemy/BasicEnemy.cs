@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BasicEnemy : MonoBehaviour
 {
@@ -10,8 +12,8 @@ public class BasicEnemy : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected GameObject playerObj = null;
     protected Vector3 playerPos = Vector3.zero;
-    protected LevelManagerEnemies levelManager;
-    protected bool useLM = true; 
+    public LevelManagerEnemies levelManager;
+    public bool useLM = true; 
 
     [Header("Stats")]
     [SerializeField] protected int speed = 4;
@@ -52,6 +54,9 @@ public class BasicEnemy : MonoBehaviour
             playerObj = GameObject.FindGameObjectWithTag("Player");
         }
         enemyLayer = LayerMask.GetMask("Player");
+        if(!useLM){
+            levelManager = null;
+        }
 
     }
 
@@ -61,6 +66,10 @@ public class BasicEnemy : MonoBehaviour
             if (Time.time > timeCount+intangibleLength){
                 intangible = false;
             }
+        }
+
+        if (transform.position.y < -100){
+            Die();
         }
     }
 
@@ -144,10 +153,10 @@ public class BasicEnemy : MonoBehaviour
         StartCoroutine(DeathFade());
         Debug.Log(name+" died");
 
-        // if (useLM){
-        //     levelManager.enemiesList.Remove(this.gameObject);
-        //     levelManager.CheckIfCleared();
-        // }
+        if (useLM){
+            levelManager.enemiesList.Remove(this);
+            levelManager.CheckIfCleared();
+        }
 
         Destroy(gameObject, 2f);
         //Die animation
@@ -166,5 +175,10 @@ public class BasicEnemy : MonoBehaviour
         spriteRenderer.color = Color.clear;
     }
 
+    public static explicit operator BasicEnemy(GameObject v)
+    {
+        throw new NotImplementedException();
+    }
 
+    
 }

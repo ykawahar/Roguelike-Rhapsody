@@ -20,6 +20,8 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject quitPanel;
 
+    [SerializeField] private GameObject helpPanel;
+
     [SerializeField] private bool isPaused;
 
     private bool panelActive = false;
@@ -56,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         storyTellerPanel.SetActive(false);
         quitPanel.SetActive(false);
+        helpPanel.SetActive(false);
         panelActive = false;
     }
 
@@ -81,6 +84,13 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void controlsOnClick() {
+        if (panelActive == false) {
+            helpPanel.SetActive(true);
+            panelActive = true;
+        }
+    }
+
     public void quitOnClick() {
         if (panelActive == false) {
             quitPanel.SetActive(true);
@@ -100,6 +110,11 @@ public class PauseMenu : MonoBehaviour
 
     public void closeSettingsOnClick(){
         settingsPanel.SetActive(false);
+        panelActive = false;
+    }
+
+    public void closeHelpOnClick(){
+        helpPanel.SetActive(false);
         panelActive = false;
     }
 

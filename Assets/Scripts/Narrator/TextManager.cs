@@ -171,7 +171,7 @@ public class TextManager : MonoBehaviour
 
     public void generateCultistText() {
         // generates cultist text
-        messageQueue.Enqueue(cultistSubjectList[Random.Range(0, cultistSubjectList.Count)] + " " + cultistDescriptorList[Random.Range(0, cultistDescriptorList.Count)] + " " + cultistDescriptorList2[Random.Range(0, cultistDescriptorList2.Count)] + " " + slimeActionList[Random.Range(0, slimeActionList.Count)]);
+        messageQueue.Enqueue(cultistSubjectList[Random.Range(0, cultistSubjectList.Count)] + " " + cultistDescriptorList[Random.Range(0, cultistDescriptorList.Count)] + " " + cultistDescriptorList2[Random.Range(0, cultistDescriptorList2.Count)] + " " + cultistActionList[Random.Range(0, cultistActionList.Count)]);
     }
 
     public void generateSlimeText() {

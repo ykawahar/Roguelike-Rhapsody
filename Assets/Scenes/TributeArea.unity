@@ -8272,9 +8272,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5700667017848692819, guid: 9c90bec0165124bd8b0560d19e3f6f37, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 500045a72cd6df94c811b370ea9680d2, type: 3}
+    - target: {fileID: 5700667017848692819, guid: 9c90bec0165124bd8b0560d19e3f6f37, type: 3}
       propertyPath: rolloffMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5700667018582897638, guid: 9c90bec0165124bd8b0560d19e3f6f37, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b34371c9a22f5c4b951aedc5a4893d3, type: 3}
     - target: {fileID: 5700667018582897638, guid: 9c90bec0165124bd8b0560d19e3f6f37, type: 3}
       propertyPath: rolloffMode
       value: 1

@@ -40,7 +40,8 @@ private TextManager textLog;
             SceneManager.LoadScene("CombatScene");
             MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Boss") {
-            // SceneManager.LoadScene("")
+            SceneManager.LoadScene("BossScene");
+            MainMapManager.Instance.mapCanvas.SetActive(false);
         } else {
             //do nothing
         }

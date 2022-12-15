@@ -24,6 +24,8 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private bool isPaused;
 
+    [SerializeField] private Text narratorLog;
+
     private bool panelActive = false;
     private Canvas[] canvasObjects;
 
@@ -81,6 +83,7 @@ public class PauseMenu : MonoBehaviour
         if (panelActive == false) {
             storyTellerPanel.SetActive(true);
             panelActive = true;
+            narratorLog.text = StaticNarratorLog.narratorLog;
         }
     }
 

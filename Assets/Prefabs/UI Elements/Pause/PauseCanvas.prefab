@@ -1952,6 +1952,7 @@ MonoBehaviour:
   quitPanel: {fileID: 3064223354287601981}
   helpPanel: {fileID: 7817921069260428431}
   isPaused: 0
+  narratorLog: {fileID: 4090514480624404670}
 --- !u!1 &4441792428359839234
 GameObject:
   m_ObjectHideFlags: 0

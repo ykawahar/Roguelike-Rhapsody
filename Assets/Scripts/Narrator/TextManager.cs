@@ -7,9 +7,9 @@ public class TextManager : MonoBehaviour
 {
 
     public Queue<string> messageQueue;
-    private string prologue = PlayerStats.epithet + " <name>| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
+    private string prologue = PlayerStats.epithet + " Agaron| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
 
-    private string tributeScreen = "At a shrine| to the gods| one above| one below|" + PlayerStats.epithet + "| <name>| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
+    private string tributeScreen = "At a shrine| to the gods| one above| one below|" + PlayerStats.epithet + "| Agaron| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
 
     private string godsAboveTribute = "The call of| the higher| spoke to him| through the flame. He offered| his tribute| to be raised| up in smoke.";
     private string godsBelowTribute = "Through flame tongues| the call of| gods below| compelled him. To offer| his tribute| to be raised| up in smoke.";
@@ -166,7 +166,7 @@ public class TextManager : MonoBehaviour
     }
 
     public void nodeTraversalLog() {
-        messageQueue.Enqueue(nodeTraversal[Random.Range(0, nodeTraversal.Count)] + " " + nodeTraversal2[Random.Range(0, nodeTraversal2.Count)] + " " + nodeTraversal3[Random.Range(0, nodeTraversal3.Count)]);
+        messageQueue.Enqueue(nodeTraversal[Random.Range(0, nodeTraversal.Count)] + " " + nodeTraversal2[Random.Range(0, nodeTraversal2.Count)] + " " + "Agaron " +nodeTraversal3[Random.Range(0, nodeTraversal3.Count)]);
     }
 
     public void generateCultistText() {

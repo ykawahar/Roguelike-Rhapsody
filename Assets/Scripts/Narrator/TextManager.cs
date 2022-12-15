@@ -11,8 +11,8 @@ public class TextManager : MonoBehaviour
 
     private string tributeScreen = "At a shrine| to the gods| one above| one below|" + " " + PlayerStats.epithet + "| Agaron| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
 
-    private string godsAboveTribute = "The call of| the higher| spoke to him| through the flame. He offered| his tribute| to be raised| up in smoke.";
-    private string godsBelowTribute = "Through flame tongues| the call of| gods below| compelled him. To offer| his tribute| to be raised| up in smoke.";
+    public string godsAboveTribute = "The call of| the higher| spoke to him| through the flame. He offered| his tribute| to be raised| up in smoke.";
+    public string godsBelowTribute = "Through flame tongues| the call of| gods below| compelled him. To offer| his tribute| to be raised| up in smoke.";
     public ArrayList slimeSubjectList;
     public ArrayList cultistSubjectList;
     public ArrayList cultistDescriptorList;
@@ -32,6 +32,7 @@ public class TextManager : MonoBehaviour
     public ArrayList nodeTraversal2;
     public ArrayList nodeTraversal3;
 
+    public ArrayList tributeList;
 
 
     // Start is called before the first frame update
@@ -66,6 +67,9 @@ public class TextManager : MonoBehaviour
         nodeTraversal2 = new ArrayList();
         nodeTraversal3 = new ArrayList();
 
+        tributeList = new ArrayList();
+
+        
 
         slimeSubjectList.Add("Beasts of slime|");
         slimeSubjectList.Add("Beasts of ooze|");
@@ -76,8 +80,9 @@ public class TextManager : MonoBehaviour
         cultistSubjectList.Add("Devout men|");
 
         slimeDescriptorList.Add("of blue hue|");
-        slimeDescriptorList.Add("of green hue|");
-        slimeDescriptorList.Add("of red hue|");
+        // slimeDescriptorList.Add("of green hue|");
+        // slimeDescriptorList.Add("of red hue|");
+        slimeDescriptorList.Add("of strange hue|");
 
         cultistDescriptorList.Add("in dark robes|");
         cultistDescriptorList.Add("in crimson|");
@@ -186,8 +191,10 @@ public class TextManager : MonoBehaviour
         if (PlayerStats.epithet != "" && Random.Range(0, 100) < 10) {
             messageQueue.Enqueue(PlayerStats.epithet + " Agaron" + waveClearVerb[2] + " " + waveClearVerb[2]);
         }
+        
     }
 
+    
     //wait 10 seconds before switchin scenes
     // IEnumerator WaitAndSwitchScene(){
     //     yield return new WaitForSeconds(10);

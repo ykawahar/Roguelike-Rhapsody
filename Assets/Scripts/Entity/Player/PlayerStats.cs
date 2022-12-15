@@ -18,8 +18,8 @@ public class PlayerStats
     // public static float jumpHeight = 0.6f;
 
     [Header ("Combat")]
-    public static float strength = 3f;
-    public static float basicDamage = 4f;
+    public static float strength = 2f;
+    public static float basicDamage = 1f;
     public static float knockbackStrength = 15f;
     public static float basicAttackRate = 2f;
 

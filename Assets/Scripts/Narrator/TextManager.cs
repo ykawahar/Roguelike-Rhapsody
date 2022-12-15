@@ -165,8 +165,23 @@ public class TextManager : MonoBehaviour
         messageQueue.Enqueue(tributeScreen);
     }
 
-    void nodeTraversalLog() {
+    public void nodeTraversalLog() {
         messageQueue.Enqueue(nodeTraversal[Random.Range(0, nodeTraversal.Count)] + " " + nodeTraversal2[Random.Range(0, nodeTraversal2.Count)] + " " + nodeTraversal3[Random.Range(0, nodeTraversal3.Count)]);
+    }
+
+    public void generateCultistText() {
+        // generates cultist text
+        messageQueue.Enqueue(cultistSubjectList[Random.Range(0, cultistSubjectList.Count)] + " " + cultistDescriptorList[Random.Range(0, cultistDescriptorList.Count)] + " " + cultistDescriptorList2[Random.Range(0, cultistDescriptorList2.Count)] + " " + slimeActionList[Random.Range(0, slimeActionList.Count)]);
+    }
+
+    public void generateSlimeText() {
+        // generates slime text
+        messageQueue.Enqueue(slimeSubjectList[Random.Range(0, slimeSubjectList.Count)] + " " + slimeDescriptorList[Random.Range(0, slimeDescriptorList.Count)] + " " + slimeDescriptorList2[Random.Range(0, slimeDescriptorList2.Count)] + " " + slimeActionList[Random.Range(0, slimeActionList.Count)]);
+    }
+
+    public void generateWaveClearText() {
+        // generates wave clear text
+        messageQueue.Enqueue(waveClear[Random.Range(0, waveClear.Count)] + " " + waveClearAdverb[Random.Range(0, waveClearAdverb.Count)] + " " + waveClearVerb[Random.Range(0, waveClearVerb.Count)]);
     }
 
     //wait 10 seconds before switchin scenes

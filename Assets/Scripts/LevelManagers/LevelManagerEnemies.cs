@@ -43,6 +43,7 @@ public class LevelManagerEnemies : MonoBehaviour
         //Conditions to clear level
         if (enemiesList.Count<= 0){
             StartCoroutine(RevealGate(1));
+            generateWaveClearText();
         }
     }
 
@@ -63,7 +64,30 @@ public class LevelManagerEnemies : MonoBehaviour
             newEnemy.levelManager = this;
             newEnemy.transform.parent = transform;
         }
+        // checks to see if enemy type is cultist
+        if (enemy.name == "Cultist") {
+            generateCultistText();
+        }
+        if (enemy.name == "Slime") {
+            generateSlimeText();
+        }
+
         // textLog.messageQueue.Enqueue(textLog.slimeSubjectList[Random.Range(0, textLog.slimeSubjectList.Count)] + " " + textLog.slimeDescriptorList[Random.Range(0, textLog.slimeDescriptorList.Count)] + " " + textLog.slimeDescriptorList2[Random.Range(0, textLog.slimeDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
+    }
+
+    void generateCultistText() {
+        // generates cultist text
+        textLog.messageQueue.Enqueue(textLog.cultistSubjectList[Random.Range(0, textLog.cultistSubjectList.Count)] + " " + textLog.cultistDescriptorList[Random.Range(0, textLog.cultistDescriptorList.Count)] + " " + textLog.cultistDescriptorList2[Random.Range(0, textLog.cultistDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
+    }
+
+    void generateSlimeText() {
+        // generates slime text
+        textLog.messageQueue.Enqueue(textLog.slimeSubjectList[Random.Range(0, textLog.slimeSubjectList.Count)] + " " + textLog.slimeDescriptorList[Random.Range(0, textLog.slimeDescriptorList.Count)] + " " + textLog.slimeDescriptorList2[Random.Range(0, textLog.slimeDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
+    }
+
+    void generateWaveClearText() {
+        // generates wave clear text
+        textLog.messageQueue.Enqueue(textLog.waveClear[Random.Range(0, textLog.waveClear.Count)] + " " + textLog.waveClearAdverb[Random.Range(0, textLog.waveClearAdverb.Count)] + " " + textLog.waveClearVerb[Random.Range(0, textLog.waveClearVerb.Count)]);
     }
 
     // IEnumerator WaitAndSwitchScene(){

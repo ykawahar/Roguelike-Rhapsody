@@ -8,13 +8,30 @@ public class TextManager : MonoBehaviour
 
     public Queue<string> messageQueue;
     private string prologue = PlayerStats.epithet + " <name>| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
+
+    private string tributeScreen = "At a shrine| to the gods| one above| one below|" + PlayerStats.epithet + "| <name>| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
+
+    private string godsAboveTribute = "The call of| the higher| spoke to him| through the flame. He offered| his tribute| to be raised| up in smoke.";
+    private string godsBelowTribute = "Through flame tongues| the call of| gods below| compelled him. To offer| his tribute| to be raised| up in smoke.";
     public ArrayList slimeSubjectList;
     public ArrayList cultistSubjectList;
     public ArrayList cultistDescriptorList;
     public ArrayList cultistDescriptorList2;
+    public ArrayList cultistActionList;
     public ArrayList slimeDescriptorList;
     public ArrayList slimeDescriptorList2;
     public ArrayList slimeActionList;
+    public ArrayList batSubjectList;
+    public ArrayList batDescriptorList;
+    public ArrayList batDescriptorList2;
+    public ArrayList batActionList;
+    public ArrayList waveClear;
+    public ArrayList waveClearAdverb;
+    public ArrayList waveClearVerb;
+    public ArrayList nodeTraversal;
+    public ArrayList nodeTraversal2;
+    public ArrayList nodeTraversal3;
+
 
 
     // Start is called before the first frame update
@@ -34,6 +51,21 @@ public class TextManager : MonoBehaviour
         cultistSubjectList = new ArrayList();
         cultistDescriptorList = new ArrayList();
         cultistDescriptorList2 = new ArrayList();
+        cultistActionList = new ArrayList();
+
+        batSubjectList = new ArrayList();
+        batDescriptorList = new ArrayList();
+        batDescriptorList2 = new ArrayList();
+        batActionList = new ArrayList();
+
+        waveClear = new ArrayList();
+        waveClearAdverb = new ArrayList();
+        waveClearVerb = new ArrayList();
+
+        nodeTraversal = new ArrayList();
+        nodeTraversal2 = new ArrayList();
+        nodeTraversal3 = new ArrayList();
+
 
         slimeSubjectList.Add("Beasts of slime|");
         slimeSubjectList.Add("Beasts of ooze|");
@@ -51,6 +83,9 @@ public class TextManager : MonoBehaviour
         cultistDescriptorList.Add("in crimson|");
         cultistDescriptorList.Add("of old gods|");
 
+        cultistActionList.Add("soon attacked!");
+        cultistActionList.Add("had attacked!");
+
         slimeDescriptorList2.Add("and strange smell|");
         slimeDescriptorList2.Add("and foul smell|");
         slimeDescriptorList2.Add("and strange face|");
@@ -61,8 +96,49 @@ public class TextManager : MonoBehaviour
         slimeActionList.Add("came to be!");
         slimeActionList.Add("had appeared!");
 
+        batSubjectList.Add("Flighted beasts|");
+        batSubjectList.Add("Flying beasts|");
+        batSubjectList.Add("Swooping beasts|");
+
+        batDescriptorList.Add("leather-winged|");
+        batDescriptorList.Add("of pleat-wing|");
+        batDescriptorList.Add("unfeathered|");
+
+        batDescriptorList2.Add("with lone eye|");
+        batDescriptorList2.Add("with sole eye|");
+        batDescriptorList2.Add("with one eye|");
+
+        batActionList.Add("came in droves!");
+        batActionList.Add("had attacked!");
+
+        waveClear.Add("Through effort|");
+        waveClear.Add("With great might|");
+
+        waveClearAdverb.Add("handily|");
+        waveClearAdverb.Add("easily|");
+        waveClearAdverb.Add("blessed by the gods|");
+
+        waveClearVerb.Add("slew the beasts!");
+        waveClearVerb.Add("vanquished all!");
+        waveClearVerb.Add("bonk-bonk-bonked!");
+
+        nodeTraversal.Add("In fair wind|");
+        nodeTraversal.Add("In foul wind|");
+        nodeTraversal.Add("Through kingdom|");
+
+        nodeTraversal2.Add("with great speed|");
+        nodeTraversal2.Add("making way|");
+        nodeTraversal2.Add("and terrain|");
+
+        nodeTraversal3.Add("traveled far.");
+        nodeTraversal3.Add("journeyed on.");
+        nodeTraversal3.Add("had trekked forth.");
+
         if(sceneName == "Prologue") {
             StartCoroutine("StartPrologue");
+        }
+        if(sceneName == "TributeArea") {
+            StartCoroutine("StartTribute");
         }
     }
 
@@ -82,6 +158,14 @@ public class TextManager : MonoBehaviour
 
     void StartPrologue(){
         messageQueue.Enqueue(prologue);
+    }
+
+    void StartTribute(){
+        messageQueue.Enqueue(tributeScreen);
+    }
+
+    void nodeTraversalLog() {
+        messageQueue.Enqueue(nodeTraversal[Random.Range(0, nodeTraversal.Count)] + " " + nodeTraversal2[Random.Range(0, nodeTraversal2.Count)] + " " + nodeTraversal3[Random.Range(0, nodeTraversal3.Count)]);
     }
 
     //wait 10 seconds before switchin scenes

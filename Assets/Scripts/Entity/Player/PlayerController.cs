@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if(Input.GetKeyDown("q")){
                     SpecialAttack();
-                    nextAttackTime = Time.time + 1f/PlayerStats.basicAttackRate;
+                    nextAttackTime = Time.time + 3f/PlayerStats.basicAttackRate;
                 }
             }
             
@@ -198,7 +198,6 @@ public class PlayerController : MonoBehaviour
                 moveDirection.y = Jump();
                 animator.SetTrigger("Jump");
                 // animator.SetBool("Jump_Bool", true);
-
             }
         }
 

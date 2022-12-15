@@ -17,10 +17,6 @@ private Sprite assignedSprite;
     {
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/swords"));
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/tribute"));
-        // if(MainMapManager.Instance.mapNodes.Length < 12) {
-        //     Debug.Log("map is not populated");
-        //     MainMapManager.Instance.mapNodes.add
-        // }
         this.gameObject.GetComponent<Image>().sprite = getRandomLevel(); //see random level notes
         this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
     }

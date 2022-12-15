@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300598, g: 0.4921949, b: 0.57192343, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300604, g: 0.492195, b: 0.57192326, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 5785028116210472011, guid: 2490f851710044423b8402d453553041, type: 3}
   enemiesList: []
-  gate: {fileID: 1858997545}
+  gate: {fileID: 0}
   textLogManager: {fileID: 766237271}
 --- !u!65 &248263290
 BoxCollider:
@@ -1008,8 +1008,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882999979}
   m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: -6.100649, y: 5.6024113, z: 50.546158}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.100649, y: -0.5, z: 49.47}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 852780496}
   m_RootOrder: 1
@@ -1565,7 +1565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330501949724235907, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6330501949724235908, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
       propertyPath: m_RootOrder
@@ -1638,8 +1638,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254686433}
   m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: -6.100649, y: 12.102411, z: 40.446156}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.100649, y: 6.1, z: 35.88}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 852780496}
   m_RootOrder: 0
@@ -2042,7 +2042,7 @@ Transform:
   m_GameObject: {fileID: 1770124225}
   m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: -6.100649, y: 4.0024114, z: 63.846157}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 852780496}
   m_RootOrder: 2
@@ -2191,9 +2191,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dcb35912b335a21488d9fe11941c7bca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6c8e666c12ba503439970d21766ec8d8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2407,11 +2407,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843784902}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1858997545 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6330501949724235907, guid: 80c3c752ebababb4aafd41f16c37451f, type: 3}
-  m_PrefabInstance: {fileID: 1253833470}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1955519796
 GameObject:
   m_ObjectHideFlags: 0

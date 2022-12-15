@@ -511,8 +511,8 @@ MonoBehaviour:
   actionDistance: 30
   intangible: 0
   intangibleLength: 0.5
-  sizeCategory: 1
-  selfCopy: {fileID: 481276722755560632}
+  sizeCategory: 2
+  selfCopy: {fileID: 8594016200066489340, guid: 5fc31f35fd1a14a108cb66197fffddc2, type: 3}
   scale: {x: 0, y: 0, z: 0}
 --- !u!1 &481276722794981419
 GameObject:

@@ -43,6 +43,7 @@ public class LevelManagerEnemies : MonoBehaviour
         //Conditions to clear level
         if (enemiesList.Count<= 0){
             StartCoroutine(RevealGate(1));
+            textLog.generateWaveClearText();
         }
     }
 
@@ -63,6 +64,14 @@ public class LevelManagerEnemies : MonoBehaviour
             newEnemy.levelManager = this;
             newEnemy.transform.parent = transform;
         }
+        // checks to see if enemy type is cultist
+        if (enemy.name == "Cultist") {
+            textLog.generateCultistText();
+        }
+        if (enemy.name == "Slime") {
+            textLog.generateSlimeText();
+        }
+
         // textLog.messageQueue.Enqueue(textLog.slimeSubjectList[Random.Range(0, textLog.slimeSubjectList.Count)] + " " + textLog.slimeDescriptorList[Random.Range(0, textLog.slimeDescriptorList.Count)] + " " + textLog.slimeDescriptorList2[Random.Range(0, textLog.slimeDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
     }
 

@@ -6,12 +6,13 @@ using System;
 public class CircleField : MonoBehaviour
 {
     float scale = 1;
-    float targetScale = 6;
-    float duration = 2f;
+    float targetScale = 5;
+    float duration = 1f;
     float initYScale;
     List<Collider> hitEnemies;
     bool end = false;
     public LayerMask enemyLayer;
+    ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class CircleField : MonoBehaviour
 
         hitEnemies = new List<Collider>();
         
+        particleSystem = GetComponent<ParticleSystem>();
+        particleSystem.Play();
     }
 
     // Update is called once per frame
@@ -63,6 +66,9 @@ public class CircleField : MonoBehaviour
         scale = endValue;
         end = true;
         callback(ReturnHitEnemies());
+        Destroy(gameObject);
+
+  
         
     } 
 

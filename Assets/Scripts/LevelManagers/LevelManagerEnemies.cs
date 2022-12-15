@@ -88,7 +88,7 @@ public class LevelManagerEnemies : MonoBehaviour
         newEnemy.useLM = true;
         newEnemy.transform.parent = transform;
 
-        if (enemy.name == "Slime") {
+        if (enemy.name == "Giant Slime Blue Variant") {
             textLog.generateSlimeText();
         }
     }

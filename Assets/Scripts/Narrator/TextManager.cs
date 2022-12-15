@@ -9,7 +9,7 @@ public class TextManager : MonoBehaviour
     public Queue<string> messageQueue;
     private string prologue = PlayerStats.epithet + " Agaron| washed up on| sandy shore.| His calling| left him now| shipless and| stranded here.| Stirring from| slumber and| wiping the| sand away.| Queen of the| Gods Above| Amani| called to him.| To atone| for your sins| hear my voice,| heed my call.| The river| called Mercy| is poisoned | she bleeds black!";
 
-    private string tributeScreen = "At a shrine| to the gods| one above| one below|" + PlayerStats.epithet + "| Agaron| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
+    private string tributeScreen = "At a shrine| to the gods| one above| one below|" + " " + PlayerStats.epithet + "| Agaron| felt the call| of the flame. Would he choose| to add weight| to the scale| of above? Or weigh down| the balance| to the gods| underneats?";
 
     private string godsAboveTribute = "The call of| the higher| spoke to him| through the flame. He offered| his tribute| to be raised| up in smoke.";
     private string godsBelowTribute = "Through flame tongues| the call of| gods below| compelled him. To offer| his tribute| to be raised| up in smoke.";
@@ -181,7 +181,11 @@ public class TextManager : MonoBehaviour
 
     public void generateWaveClearText() {
         // generates wave clear text
-        messageQueue.Enqueue(waveClear[Random.Range(0, waveClear.Count)] + " " + waveClearAdverb[Random.Range(0, waveClearAdverb.Count)] + " " + waveClearVerb[Random.Range(0, waveClearVerb.Count)]);
+        messageQueue.Enqueue(waveClear[Random.Range(0, waveClear.Count-1)] + " " + "Agaron "+ waveClearAdverb[Random.Range(0, waveClearAdverb.Count-1)] + " " + waveClearVerb[Random.Range(0, waveClearVerb.Count-1)]);
+
+        if (PlayerStats.epithet != "" && Random.Range(0, 100) < 10) {
+            messageQueue.Enqueue(PlayerStats.epithet + " Agaron" + waveClearVerb[2] + " " + waveClearVerb[2]);
+        }
     }
 
     //wait 10 seconds before switchin scenes

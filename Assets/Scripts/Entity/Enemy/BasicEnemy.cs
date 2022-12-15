@@ -158,7 +158,7 @@ public class BasicEnemy : MonoBehaviour
             levelManager.CheckIfCleared();
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1.5f);
         //Die animation
         //Disable this enemy
     }

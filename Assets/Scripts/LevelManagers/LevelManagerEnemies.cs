@@ -14,6 +14,8 @@ public class LevelManagerEnemies : MonoBehaviour
     private TextManager textLog;
     private int difficulty;
 
+    public bool bossLevel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,11 @@ public class LevelManagerEnemies : MonoBehaviour
 
         enemiesList = new List<BasicEnemy>();
         textLog = textLogManager.GetComponent<TextManager>();
-        SpawnEnemies();
+        if (bossLevel){
+            SpawnBoss();
+        } else {
+            SpawnEnemies();
+        }
         gate = GameObject.FindGameObjectWithTag("Gate");
         gate.SetActive(false);
         
@@ -73,6 +79,18 @@ public class LevelManagerEnemies : MonoBehaviour
         }
 
         // textLog.messageQueue.Enqueue(textLog.slimeSubjectList[Random.Range(0, textLog.slimeSubjectList.Count)] + " " + textLog.slimeDescriptorList[Random.Range(0, textLog.slimeDescriptorList.Count)] + " " + textLog.slimeDescriptorList2[Random.Range(0, textLog.slimeDescriptorList2.Count)] + " " + textLog.slimeActionList[Random.Range(0, textLog.slimeActionList.Count)]);
+    }
+
+    void SpawnBoss(){
+        BasicEnemy newEnemy = (BasicEnemy) Instantiate(enemy, new Vector3(15,20,10), Quaternion.Euler(30,1,0)).GetComponent<BasicEnemy>();
+        enemiesList.Add(newEnemy);
+        newEnemy.levelManager = this;
+        newEnemy.useLM = true;
+        newEnemy.transform.parent = transform;
+
+        if (enemy.name == "Slime") {
+            textLog.generateSlimeText();
+        }
     }
 
     // IEnumerator WaitAndSwitchScene(){

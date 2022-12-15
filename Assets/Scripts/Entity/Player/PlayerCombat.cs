@@ -59,10 +59,10 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void ExpandFinished(Collider[] hitEnemies){
-
-        Debug.Log("Action Completed");
         foreach (Collider enemy in hitEnemies){
-            enemy.GetComponent<BasicEnemy>().TakeDamage(10);
+            if (enemy != null){
+                enemy.GetComponent<BasicEnemy>().TakeDamage(10);
+            }
         }
     }
 

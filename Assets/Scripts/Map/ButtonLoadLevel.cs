@@ -11,14 +11,15 @@ public class ButtonLoadLevel : MonoBehaviour
 public List<Sprite> LevelTypes;
 public string currentLevelType;
 private Sprite assignedSprite;
-
+private TextManager textLog;
     // Start is called before the first frame update
     void Start()
     {
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/swords"));
         LevelTypes.Add(Resources.Load<Sprite>("Sprites/Icons/tribute"));
         this.gameObject.GetComponent<Image>().sprite = getRandomLevel(); //see random level notes
-        this.gameObject.GetComponent<Button>().onClick.AddListener(loadCurrentLevel);
+        this.gameObject.GetComponent<Button>().onClick.AddListener(sendText);
+        textLog = GameObject.Find("TextLogManager").GetComponent<TextManager>();
     }
 
     // Update is called once per frame
@@ -39,10 +40,16 @@ private Sprite assignedSprite;
             SceneManager.LoadScene("CombatScene");
             MainMapManager.Instance.mapCanvas.SetActive(false);
         } else if (currentLevelType == "Boss") {
-            // SceneManager.LoadScene("")
+            SceneManager.LoadScene("BossScene");
+            MainMapManager.Instance.mapCanvas.SetActive(false);
         } else {
             //do nothing
         }
+    }
+
+    void sendText() {
+        textLog.nodeTraversalLog();
+        StartCoroutine(WaitAndSwitchScene(2f));
     }
     public Sprite getRandomLevel() { //need to add weights to make the combat more common (60/40 or 70/30)
         assignedSprite = LevelTypes[Random.Range(0, LevelTypes.Count)];
@@ -55,5 +62,10 @@ private Sprite assignedSprite;
         }
         // Debug.Log(randomLevel.name); //testing purposes
         return assignedSprite;
+    }
+
+    IEnumerator WaitAndSwitchScene(float delay) {
+        yield return new WaitForSeconds(delay);
+        loadCurrentLevel();
     }
 }

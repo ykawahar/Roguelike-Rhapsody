@@ -83,7 +83,9 @@ public class PauseMenu : MonoBehaviour
         if (panelActive == false) {
             storyTellerPanel.SetActive(true);
             panelActive = true;
+            // removes all '|' characters from the narrator log;
             narratorLog.text = StaticNarratorLog.narratorLog;
+            narratorLog.text = narratorLog.text.Replace("|", "");
         }
     }
 

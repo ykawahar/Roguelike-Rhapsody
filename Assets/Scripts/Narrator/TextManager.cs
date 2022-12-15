@@ -152,6 +152,7 @@ public class TextManager : MonoBehaviour
     void CheckNewMessages(){
         
         if (messageQueue.Count > 0){
+            StaticNarratorLog.narratorLog += messageQueue.Peek() + " \n";
             TextLogController.Instance.startBlockText(messageQueue.Dequeue());
         }
     }

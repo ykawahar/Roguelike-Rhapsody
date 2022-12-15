@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     void MoveDefunct(){
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         moveDirection *= PlayerStats.moveSpeed;
-        Debug.Log(moveDirection);
+        // Debug.Log(moveDirection);
             
         if (moveDirection.x > 0 && !facingRight){
             flip();
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed", (Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z)));
 
-        Debug.Log(moveDirection);
+        // Debug.Log(moveDirection);
 
         //Snap Falling
         // if (moveDirection.y < 0){
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded();
-        Debug.Log("grounded = " + charController.isGrounded);
+        // Debug.Log("grounded = " + charController.isGrounded);
         /// Movement
         if (charController.isGrounded){
             animator.SetBool("Grounded", true);
@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(boxCollider.bounds.center, Quaternion.Euler(30,1,0)*Vector3.down * (boxCollider.bounds.extents.y + 0.5f), rayColor); 
-        Debug.Log(raycastHit.collider);
+        // Debug.Log(raycastHit.collider);
         return raycastHit.collider !=null;
     }
 

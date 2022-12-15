@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UpgradePopup : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UpgradePopup : MonoBehaviour
     private GameObject spawnedPopup;
     public bool right = true;
     private bool spawned = false;
+    public GameObject gate;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +27,10 @@ public class UpgradePopup : MonoBehaviour
         if (other.tag=="Player" & !spawned){
             if (right){
                 spawnedPopup = Instantiate(popupR);
+                spawnedPopup.transform.parent = transform;
             } else {
                 spawnedPopup = Instantiate(popupL);
+                spawnedPopup.transform.parent = transform;
             }
             spawned = true;
         }

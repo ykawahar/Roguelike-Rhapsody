@@ -66,7 +66,7 @@ public class CircleField : MonoBehaviour
         scale = endValue;
         end = true;
         callback(ReturnHitEnemies());
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
 
   
         
